@@ -1,0 +1,43 @@
+enable-mana-system: true
+mana-bar-prefix: "Mana:"
+mana-bar-size: 35
+color-full: 8
+color-empty: 2
+
+default-max-mana: 1000
+default-regen-amount: 10
+regen-interval: 10
+
+ranks:
+    master:
+        max-mana: 1000
+        regen-amount: 10
+        prefix: "Mana:"
+        color-full: 8
+        color-empty: 2
+    adept:
+        max-mana: 1000
+        regen-amount: 7
+        prefix: "Mana:"
+        color-full: 8
+        color-empty: 2
+    novice:
+        max-mana: 1000
+        regen-amount: 5
+        prefix: "Mana:"
+        color-full: 8
+        color-empty: 2
+
+show-mana-on-use: false
+show-mana-on-regen: false
+show-mana-on-wood-tool: false
+show-mana-on-hunger-bar: false
+show-mana-on-experience-bar: true
+tool-slot: 8
+
+mana-potion-cooldown: 30
+str-mana-potion-on-cooldown: You cannot use another mana potion yet (%c seconds).
+mana-potions:
+    - 351:4 100
+    - 348 60
+    - 331 30

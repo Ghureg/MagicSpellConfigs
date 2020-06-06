@@ -1,0 +1,297 @@
+debug: false
+debug-level: 3
+dance-cast-item: 0
+dance-cast-duration: 8
+dance-cast-dynamic: false
+str-dance-start: ""
+str-dance-fail: ""
+enable-error-logging: true
+enable-stat-collection: true
+enable-volatile-features: true
+enable-tab-completion: true
+enable-dance-casting: true
+str-cast-usage: |
+    Usage: /cast <spell>. 
+    Use /cast list to see a list of spells.
+str-unknown-spell: You do not know a spell with that name.
+str-spell-change: 
+str-spell-change-empty: You are no longer using a spell.
+str-on-cooldown: That spell is on cooldown (%c seconds remaining).
+str-missing-reagents: You do not have the recuaierd mana
+str-cant-cast: You can't cast that spell right now.
+str-wrong-world: You cannot cast that spell here.
+str-console-name: Admin
+text-color: 3
+broadcast-range: 20
+spell-icon-slot: -1
+separate-player-spells-per-world: false
+allow-cycle-to-no-spell: false
+always-show-message-on-cycle: false
+only-cycle-to-castable-spells: true
+allow-cast-with-fist: true
+cast-with-left-click: true
+cast-with-right-click: true
+ops-have-all-spells: true
+ops-ignore-reagents: false
+ops-ignore-cooldowns: false
+ops-ignore-cast-times: false
+default-all-perms-false: false
+ignore-default-bindings: false
+ignore-cast-item-enchants: true
+ignore-cast-item-names: false
+ignore-cast-item-durability: [ 268, 269, 270, 271, 283, 284, 285, 286, 290, 294, 314, 315, 316, 317, 388, 261, 405, 289, 274, 292, 277, 286 ]
+los-transparent-blocks: [ 0, 27, 28, 31, 32, 37, 38, 39, 40, 50, 51, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 78, 93, 94, 106, 111 ]
+global-cooldown: 10
+check-world-pvp-flag: true
+cast-on-animate: false
+use-exp-bar-as-cast-time-bar: true
+cooldowns-persist-through-reload: true
+
+entity-names:
+
+    zombie: an ugly zombie
+    skeleton: a scary skeleton
+    spider: a venomos spider
+    cavespider: a nasty little spider
+    creeper: a creepy creeper
+    slime: a slimy blob
+    wolf: a fur ball
+    snowman: a snow golem
+    villager: an innocent villager
+    enderman: Mr. Enderman
+    silverfish: a rat
+    ghast: a ghast
+    pigzombie: a pig zombie
+    blaze: a blaze
+    lavaslime: a magma slime
+    giant: the giant
+    enderdragon: the ender dragon
+    cow: a cow
+    sheep: a sheep
+    pig: a smelly pig
+    chicken: a duck
+    mushroomcow: a deformed cow
+    squid: a slimy squid
+    irongolem: a friendly iron golem
+predefined-items:
+    em:
+        type: "388"
+        name: "&6Healing elxer"
+        lore:
+          - "&dthe drink of gods"
+          - "&dleft click to heal"
+        enchants:
+          - "LUCK 8"
+    hammer: 
+        type: "296"
+        name: "&4Hephaestus Hammer"
+        lore:
+          - "&eHephaestus Hammer used be Hephaestus"
+          - "&ehimself used to craft at the forge"
+          - "&eThough it dues fine on enemy skalls too"
+          - "&eright click to summon the fires of the forge"
+        attributes:
+            attr1: "generic.attackDamage 18"
+    spear: 
+        type: "292"
+        name: "&4Ares Spear"
+        lore:
+          - "&eThe spear of Ares though dues a lot"
+          - "&eof damage but it can cause you much"
+          - "&edamage but a fighter has to do what they have to"
+          - "&eright click to call enemies to you"
+        attributes:
+            attr1: "generic.attackDamage 15"
+    lips: 
+        type: "351:1"
+        name: "&4The lips of love"
+        lore:
+          - "&eA pair of lips made for you to well"
+          - "&ekiss people with but they die to..."
+          - "&eoh well it was a good kiss"
+          - "&eright click to kiss"
+        attributes:
+            attr1: "generic.attackDamage 15"
+    bows: 
+        type: "261"
+        name: "&4The Bow of Artemis"
+        lore:
+          - "&eA silver bow along with a"
+          - "&equiver that seams to never run"
+          - "&eout of arrows... seems to have some kick"
+          - "&eleft click for attack right click for fireing"
+        enchants:
+          - "ARROW_INFINITE 51"
+          - "ARROW_DAMAGE 48"
+        attributes:
+            attr1: "generic.attackDamage 15"
+            attr2: "generic.movementSpeed .2"
+    crown: 
+        type: "289"
+        name: "&4The Crown of Hades"
+        lore:
+          - "&eA black crown with little skulls"
+          - "&eput it on and you become invisable"
+          - "&ealso good for hitting people over the head"
+          - "&eright click to put the crown on"
+        attributes:
+            attr1: "generic.attackDamage 15"
+    try: 
+        type: "405"
+        name: "&4Poseidon's Trydent"
+        lore:
+          - "&ePoseidon's Trydent uses to create "
+          - "&ewater springs that throughs your foe"
+          - "&einto the air"
+          - "&eright click to summon a spring"
+        attributes:
+            attr1: "generic.attackDamage 15"
+    bolt: 
+        type: "277"
+        name: "&4Zeus' masterbolt"
+        lore:
+          - "&eA lighting bolt that can sommon"
+          - "&eother bolts but this is very exspencive"
+          - "&eand can kill your friends"
+          - "&eright click and sommon a bolt"
+        attributes:
+            attr1: "generic.attackDamage 15"
+    bones: 
+        type: "352"
+        name: "&2Admin wand"
+        lore:
+          - "&aexsplode"
+          - "&afireball"
+          - "&ainv"
+          - "&ainvisavle"
+          - "&alightning"
+          - "&amissile"
+          - "&apump"
+          - "&apurge"
+          - "&askeleton"
+          - "&aturrent"
+          - "&azeuscall"
+          - "&adummy1"
+        enchants:
+          - "ARROW_INFINITE 51"
+        attributes:
+            attr1: "generic.attackDamage 8888"
+            attr2: "generic.movementSpeed .2"
+    blaze_rods: 
+        type: "369"
+        name: "&2Player wand"
+        lore:
+          - "&abow"
+          - "&afire"
+          - "&agunpowder"
+          - "&ared"
+          - "&astone"
+          - "&awater"
+          - "&azeus"
+          - "&aAres"
+        enchants:
+          - "ARROW_INFINITE 51"
+        attributes:
+            attr1: "generic.attackDamage 8888"
+            attr2: "generic.movementSpeed .2"
+    books: 
+        type: "340"
+        name: "&2Portal Spellbook"
+        lore:
+          - "&agameportal"
+          - "&amark"
+          - "&amarkdeath"
+          - "&amark game"
+          - "&aportal"
+          - "&adeathportal"
+        enchants:
+          - "ARROW_INFINITE 51"
+        attributes:
+            attr1: "generic.attackDamage 8888"
+            attr2: "generic.movementSpeed .2"
+    ghureg:
+        type: "266"
+        name: "&2Ghureg's Wand"
+        lore:
+          - "&1A wand that Ghureg"
+          - "&1and his wife forged"
+        enchants:
+          - "ARROW_INFINITE 51"
+        unbreakable: true
+        attributes:
+            attr1: "generic.attackDamage 15"
+            attr2: "generic.movementSpeed .1"
+            attr1: "generic.maxHealth 30"
+    armor:
+        type: "264"
+        name: "armor dont worry about this"
+        lore:
+          - "DO NOT MOVE THIS FROM HEAR"
+        attributes:
+            attr1: "generic.maxHealth 20"
+            attr2: "generic.movementSpeed .01"
+    greekgame:
+        type: "369"
+        name: "&aMaster thing for greek game"
+        lore:
+          - "&8 only for an admin if you get this throw it out"
+    pack1:
+        type: "122"
+        name: "&6Backpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    pack2:
+        type: "122"
+        name: "&3Backpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    pack3:
+        type: "122"
+        name: "&4Backpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    pack4:
+        type: "122"
+        name: "&cBackpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    pack5:
+        type: "122"
+        name: "&DBackpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    pack6:
+        type: "122"
+        name: "&aBackpack"
+        lore:
+          - "&8 A pack of supplise"
+          - "&8Rightclick to up pack, this may take some time"
+    class_test: 
+        type: "296"
+        name: "&4testing wand"
+        lore:
+          - "&eWORNING THIS IS FOR TESTING ONLY"
+        attributes:
+            attr1: "generic.attackDamage 18"
+    class_test_up: 
+        type: "318"
+        name: "&4testing wand"
+        lore:
+          - "&eWORNING THIS IS FOR TESTING ONLY"
+        attributes:
+            attr1: "generic.attackDamage 18"
+variables:
+    player_mage:
+        type: player
+        default: 0
+        min: 0
+        max: 5
+        permanent: true
+        scoreboard-title: Mage Level
+        scoreboard-position: sidebar
+        

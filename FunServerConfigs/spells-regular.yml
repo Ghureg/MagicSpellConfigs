@@ -1,0 +1,1482 @@
+Barkeep:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - rightclickentity player
+    modifiers:
+      - name Bar_Keep required
+    chance: 30
+    cooldown: 4
+    spells:
+        - ale1
+gnome:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    spells:
+        - gnome_armor
+gnome_armor:
+    spell-class: ".buff.ArmorSpell"
+    name: gnome_armor
+    duration: 0
+    num-uses: 0
+    chestplate: gnome_ring
+    variable-mods-cast:
+        - race_gnome 1
+        - race_porc 0
+        - race_dwarf 0
+        - race_elf 0
+        - race_kobold 0
+        - race_goblin 0
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&5You Are A:"
+        subtitle: "&9Gnome"
+        fade-in: 10
+        stay: 50
+        fade-out: 10.
+dwarf:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    spells:
+        - dwarf_armor
+        - dwarf_strangth
+dwarf_armor:
+    spell-class: ".buff.ArmorSpell"
+    name: dwarf_armor
+    duration: 0
+    num-uses: 0
+    chestplate: dwarf_ring
+    variable-mods-cast:
+        - race_gnome 0
+        - race_porc 0
+        - race_dwarf 1
+        - race_elf 0
+        - race_kobold 0
+        - race_goblin 0
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&5You Are A:"
+        subtitle: "&8Dwarf"
+        fade-in: 10
+        stay: 50
+        fade-out: 10
+dwarfticks:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - givedamage
+    chance: 100
+    modifiers:
+        - variableequals race_dwarf:1 required
+    cooldown: 4
+    spells:
+        - dwarf_strangth
+dwarf_strangth:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: dwarf_strangth
+    spell-icon: spider_eye
+    type: 5
+    strength: 3
+    duration: 500
+    targeted: false
+    target-players: false
+invisibility:
+    spell-class: ".buff.InvisibilitySpell"
+    name: invisibility
+    spell-icon: record_11
+    description: Makes you invisible to players and monsters.
+    cooldown: 60
+    effects:
+        - caster spawn
+        - disabled spawn
+    toggle: true
+    prevent-pickups: true
+    cancel-on-give-damage: true
+    cancel-on-logout: true
+    duration: 15
+    cost:
+        - mana 25
+    use-cost:
+        - mana 15
+    use-cost-interval: 3
+    str-cost: 25 mana, plus 15 mana every 3 seconds
+    str-cast-self: You vanish!
+    str-cast-others: "%a vanishes!"
+    str-fade: You are visible again.
+disarm:
+    spell-class: ".targeted.DisarmSpell"
+    name: disarm
+    spell-icon: stone_sword:130
+    description: Disarm your opponent.
+    cooldown: 15
+    range: 20
+    disarmable-items:
+        - blaze_rod
+        - stick
+        - book
+        - bone
+        - wood_sword
+        - stone_sword
+        - iron_sword
+        - diamond_sword
+        - bow
+    can-target: players,zombies,skeletons
+    disarm-duration: 100
+    dont-drop: true
+    prevent-theft: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-no-target: No target found.
+    str-invalid-item: Your target could not be disarmed.
+    str-cast-self: You have disarmed %t.
+    str-cast-target: "%a has disarmed you."
+test:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 10
+    tick-interval: 2
+    spell: forcepush
+egglay:
+    spell-class: ".targeted.PulserSpell"
+    cast-item: boomegg
+    total-pulses: 1
+    interval: 30
+    max-distance: 50
+    cap-per-player: 5
+    block-type: dragon_egg
+    unbreakable: true
+    only-count-on-success: true
+    spells:
+        - eggeffect
+    str-cast-self: You have layed an egg! I did not think you would be able to do that!
+    str-at-cap: You have too many eggs already. Your butt must hurt!
+egglay:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: false
+    max-targets: 1
+    spell-source-in-center: true
+    spells:
+        - explode
+explode:
+    spell-class: ".targeted.ExplodeSpell"
+    name: explode
+    spell-icon: tnt
+    description: Create an explosion.
+    cooldown: 30
+    range: 25
+    explosion-size: 4
+    backfire-chance: 3
+    prevent-block-damage: true
+    prevent-player-damage: false
+    damage-multiplier: 10
+    add-fire: true
+    simulate-tnt: true
+    ignore-canceled: false
+    cost:
+        - mana 40
+    str-cost: 40 mana
+    str-no-target: You cannot create an explosion there.
+AnvilRain:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    cast-item: anvilrain
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    spells:
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+        - anvil1
+        - DELAY 3
+anvil1:
+    spell-class: ".instant.ThrowBlockSpell"
+    name: anvil1
+    spell-icon: anvil
+    description: Throws anvils.
+    cast-item: string
+    cooldown: 0
+    block-type: anvil
+    velocity: 1.0
+    vertical-adjustment: 0.5
+    rotation-offset: 0
+    fall-damage: 2.0
+    fall-damage-max: 20
+    drop-item: false
+    remove-blocks: true
+    call-target-event: true
+    check-plugins: false
+    cost:
+        - mana 5
+    str-cost: 5 mana
+BurnsRage:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    cast-item: burnsfdildo
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    spells:
+        - Throw_fire
+        - DELAY 20
+        - firenova
+        - Throw_fire
+        - DELAY 20
+        - firenova
+        - Throw_fire
+        - DELAY 20
+        - firenova
+        - Throw_fire
+        - DELAY 20
+        - firenova
+        - Throw_fire
+        - DELAY 20
+        - firenova
+        - Throw_fire
+        - DELAY 20
+        - firenova
+kick:
+    spell-class: ".ExternalCommandSpell"
+    cast-item: Burn_wand
+    execute-on-console-instead: false
+    require-player-target: true
+    command-to-execute:
+        - "kick %t"
+    str-cast-self: You kick %t!
+ale1:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem Dwarven_ale"
+ale2:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem Dwarven_ale1"
+anvilrock:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem anvilrain"
+burnstick:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem Burn_wand"
+vanish:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "vanish"
+burnsfdildo:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem burnsfdildo"
+boomegg:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem boomegg"
+Coin:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem Coin 64"
+    str-cast-self: You reach into your pockets and grab some change!
+bouncestick:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem sticks"
+    str-cast-self: You grab a bounce stick!
+Ban:
+    spell-class: ".ExternalCommandSpell"
+    cast-item: Burn_wand
+    execute-on-console-instead: false
+    require-player-target: true
+    command-to-execute:
+        - "ban %t"
+    str-cast-self: You have banned %t
+Kill:
+    spell-class: ".ExternalCommandSpell"
+    cast-item: Burn_wand
+    execute-on-console-instead: true
+    require-player-target: true
+    command-to-execute:
+        - "kill %t"
+    str-cast-self: You have killed %t
+levitation:
+    spell-class: ".targeted.LevitateSpell"
+    name: levitation
+    description: Play with your victome.
+    cast-item: Burn_wand
+    tick-rate: 5
+    duration: 15
+    cooldown: 0
+    range: 1000
+    cancel-on-item-switch: true
+    str-cast-self: You are levitating %t!
+    str-cast-target: "%a is toying with you!"
+    str-cast-self: You have started to play with %t
+menu:
+    spell-class: ".MenuSpell"
+    title: "Admin items"
+    delay: 3
+    options:
+        Money:
+            slot: 1
+            item:
+                type: gold_nugget
+                name: "moneys"
+            spell: money_menu
+        Weponds:
+            slot: 8
+            item:
+                type: stone_pickaxe
+                name: "Wepons and tools"
+            spell: tools_menu
+        Andrew:
+            slot: 7
+            item:
+                type: bottle
+                name: "Potions"
+            spell: Andrew_menu
+Andrew_menu:
+    spell-class: ".MenuSpell"
+    title: "&bPotions"
+    delay: 3
+    options:
+        TheMoltenTremor:
+            slot: 1
+            item:
+                type: potion
+                name: "&4The_Molten_Tremor"
+            spell: TheMoltenTremor
+        dwarvenale1:
+            slot: 2
+            item:
+                type: potion
+                name: "&4Dwarven ale"
+            spell: ale1
+        dwarvenale2:
+            slot: 2
+            item:
+                type: potion
+                name: "&4Dwarven ale2"
+            spell: ale2
+        back:
+            slot: 9
+            item:
+                type: barrier
+                name: "Back to the Main Menu!"
+            spell: menu
+TheMoltenTremor:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    require-player-target: false
+    command-to-execute:
+        - "cast magicitem AndrewPotion1"
+money_menu:
+    spell-class: ".MenuSpell"
+    title: "Admin items"
+    delay: 3
+    options:
+        coin:
+            slot: 1
+            item:
+                type: gold_nugget
+                name: "Denari"
+            spell: Coin
+        back:
+            slot: 9
+            item:
+                type: barrier
+                name: "Go back to main menu"
+            spell: menu
+tools_menu:
+    spell-class: ".MenuSpell"
+    title: "Admin tools and wepons"
+    delay: 3
+    options:
+        Burns:
+            slot: 1
+            item:
+                type: stick
+                name: "Burns admin stick"
+            spell: burnstick
+        bouncestick:
+            slot: 2
+            item:
+                type: stick
+                name: "Bounce Stick"
+            spell: bouncestick
+        burnsbildo:
+            slot: 3
+            item:
+                type: stick
+                name: "Burn's Firey Dildo"
+            spell: burnsfdildo
+        anvilrain:
+            slot: 4
+            item:
+                type: flint
+                name: "Anvil Rain"
+            spell: anvilrock
+        boomegg:
+            slot: 5
+            item:
+                type: seeds
+                name: "Boom Egg"
+            spell: boomegg
+        inv:
+            slot: 10
+            item:
+                type: bone
+                name: "Invisable"
+            spell: vanish
+        back:
+            slot: 9
+            item:
+                type: barrier
+                name: "Go back to main menu"
+            spell: menu
+Throw_fire:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    cast-item: Fire_throw
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    spells:
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+        - fire1
+        - DELAY 3
+
+fire1:
+    spell-class: ".instant.ThrowBlockSpell"
+    name: fire1
+    spell-icon: anvil
+    description: Throws fire.
+    cast-item: string
+    cooldown: 0
+    block-type: fire
+    velocity: 1.0
+    vertical-adjustment: 0.5
+    rotation-offset: 0
+    fall-damage: 2.0
+    fall-damage-max: 20
+    drop-item: false
+    remove-blocks: false
+    call-target-event: true
+    check-plugins: false
+    cost:
+        - mana 5
+    str-cost: 5 mana
+
+firenova:
+    spell-class: ".instant.FirenovaSpell"
+    name: firenova
+    spell-icon: Fire_nova
+    description: Summon an expanding ring of fire.
+    cast-item: Fire_nova
+    cooldown: 0
+    range: 8
+    tick-speed: 30
+    burn-tall-grass: true
+    check-plugins: false
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-cast-self: You summon an expanding ring of fire.
+
+fire_geyser:
+    spell-class: ".targeted.GeyserSpell"
+    name: fire_geyser
+    spell-icon: lava
+    description: Create a geyser of lava at your enemy's feet.
+    cast-item: Fire_spring
+    range: 1000
+    damage: 0
+    velocity: 20
+    animation-speed: .1
+    geyser-height: 18
+    geyser-type: lava
+    ignore-armor: false
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    cost:
+        - mana 30
+    str-cost: 30 mana
+
+
+
+
+
+forcepush:
+    spell-class: ".instant.ForcepushSpell"
+    name: forcepush
+    spell-icon: record_3
+    description: Push back your enemies.
+    cast-item: Light_wand
+    cooldown: 0
+    range: 10
+    pushback-force: 20
+    additional-vertical-force: 20
+    max-vertical-force: 40
+    target-players: true
+    cost:
+        - mana 100
+    str-cost: 30 mana
+    str-cast-self: You push back your enemies!
+    str-cast-others: "Tou are thrown back "
+
+levitate:
+    spell-class: ".targeted.LevitateSpell"
+    name: levitate
+    description: Cause your target to fly through the air.
+    cast-item: Light_wand
+    tick-rate: 5
+    duration: 15
+    cooldown: 0
+    range: 100
+    cancel-on-item-switch: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-cast-self: You are levitating %t!
+    str-cast-target: "%a is levitating you!"
+dark_pain:
+    spell-class: ".targeted.PainSpell"
+    damage: 9
+    range: 100
+    ignore-armor: false
+    obey-los: true
+    target-players: true
+    check-plugins: true
+
+witherskull:
+    spell-class: ".instant.WitherSkullSpell"
+    cost:
+        - mana 20
+    cast-item: Dark_wand
+    charged: false
+    velocity: 1.0
+
+
+
+
+
+
+
+freeze:
+    spell-class: ".instant.FreezeSpell"
+    name: freeze
+    spell-icon: snow_ball
+    description: Spray your enemies with cold snowballs.
+    cast-item: Water_wand
+    snowballs: 25
+    horizontal-spread: 15
+    vertical-spread: 5
+    damage: 3
+    slow-amount: 0
+    slow-duration: 80
+    target-players: false
+    cooldown: 0
+    cost:
+        - mana 10
+    str-cost: 10 mana 
+
+geyser:
+    spell-class: ".targeted.GeyserSpell"
+    name: geyser
+    spell-icon: water
+    description: Create a geyser of water at your enemy's feet.
+    cast-item: Water_wand
+    range: 1000
+    damage: 15
+    velocity: 100
+    animation-speed: 1
+    geyser-height: 10
+    geyser-type: lava
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+ghureg_fire:
+    spell-class: ".instant.ParticleProjectileSpell"
+    right-click-cast-item: air
+    modifiers:
+      - name Ghureg required
+      - sneaking required
+    projectile-velocity: 10
+    tick-interval: 2
+    projectile-gravity: 0
+    particle-name: flame
+    particle-count: 18
+    max-distance: 18
+    max-duration: 20
+    hit-players: true
+    hit-air-at-end: true
+    spell: ghuregcombust
+    cost:
+        - mana 1
+ghuregcombust:
+    spell-class: ".targeted.CombustSpell"
+    name: ghuregcombust
+    spell-icon: fire
+    description: Set a target on fire.
+    cooldown: 10
+    range: 20
+    obey-los: true
+    fire-ticks: 360
+    fire-tick-damage: 5
+    prevent-immunity: true
+    target-players: true
+    check-plugins: false
+ghureg_spell:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    dance-cast-sequence: "SCU"
+    cost:
+        - mana 100
+    cast-time: 360
+    modifiers:
+      - name Ghureg required
+      - sneaking required
+    spells:
+        - gh1
+        - gh2
+        - gh3
+        - gharmor
+        - ghturret
+        - DELAY 5
+        - ghprayer
+gh3:
+    spell-class: ".buff.DummySpell"
+    duratuon: 60
+    effects:
+      3:
+        position: caster
+        effect: sound
+        sound: mob.enderdragon.growl
+gh1:
+    spell-class: ".buff.DummySpell"
+    name: gh1
+    duration: 60
+    effects:
+      wind1:
+        position: orbit
+        orbit-radius: 3.0
+        orbit-seconds-per-revolution: 2
+        orbit-counter-clockwise: true 
+        orbit-tick-interval: 1
+        orbit-y-offset: 1.0
+        effect: particles
+        particle-name: happyVillager
+        horiz-spread: 0.1
+        vert-spread: 0.1
+        speed: .001
+        count: 100
+        y-offset: 0
+gh2:
+    spell-class: ".buff.DummySpell"
+    name: gh2
+    duration: 60
+    effects:
+      wind1:
+        position: orbit
+        orbit-radius: 3.0
+        orbit-seconds-per-revolution: 2
+        orbit-counter-clockwise: false
+        orbit-tick-interval: 1
+        orbit-y-offset: 1.0
+        effect: particles
+        particle-name: flame
+        horiz-spread: 0.1
+        vert-spread: 0.1
+        speed: .001
+        count: 100
+        y-offset: 0
+gharmor:
+    spell-class: ".buff.ArmorSpell"
+    name: gharmor
+    duration: 0
+    num-uses: 0
+    helmet: Gharmor
+    str-cast-self: You have conjured some magic armor!
+    str-has-armor: You cannot cast this spell if you are already wearing armor.
+ghpurge:
+    spell-class: ".instant.PurgeSpell"
+    name: ghpurge
+    spell-icon: potion:16396
+    description: Kill all monsters and animals around you.
+    range: 100
+    str-cast-self: You purge all life around you.
+    str-cast-others: "%a purges all nearby life."
+ghturret:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 50
+    vertical-radius: 50
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: false
+    max-targets: 100
+    spell-source-in-center: true
+    spells:
+        - ghturret_missile
+
+ghturret_missile:
+    spell-class: ".targeted.HomingMissileSpell"
+    projectile-velocity: 4
+    projectile-inertia: 0
+    particle-name: enchantmenttable
+    particle-speed: 0
+    particle-count: 25
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    y-offset: 1.2
+    max-duration: 60
+    target-players: true
+    spell: ghturret_pain
+    effects:
+        - caster spawn
+        - target particles angryVillager 0.3 10 0 100 0
+ghturret_pain:
+    spell-class: ".targeted.PainSpell"
+    damage: 100
+    range: 100
+    ignore-armor: false
+    obey-los: true
+    target-players: true
+    check-plugins: true
+ghprayer:
+    spell-class: ".instant.PrayerSpell"
+    name: ghprayer
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cooldown: 15
+    amount-healed: 100
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
+bowling:
+    spell-class: ".MultiSpell"
+    name: bowling
+    cooldown: 2
+    check-individual-cooldowns: false
+    spells:
+        - PROJECTILEtornado
+        - DESTROY_PROJECTILEtornado1
+        - DESTROY_PROJECTILEtornado2
+        - DESTROY_PROJECTILEtornado3
+        - DESTROY_PROJECTILEtornado4
+
+
+
+
+AOEtornado:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 7
+    vertical-radius: 17
+    point-blank: true
+    can-target: players,nonplayers
+    fail-if-no-targets: false
+    spells:
+        - DAMAGE_PLAYERtornado
+        - DAMAGE_MOBtornado
+        - SLOWtornado
+        - TOSStornado
+DAMAGE_PLAYERtornado:
+    spell-class: ".targeted.PainSpell"
+    damage: 5
+    range: 8
+    ignore-armor: false
+    obey-los: true
+    can-target: players
+    check-plugins: true
+DAMAGE_MOBtornado:
+    spell-class: ".targeted.PainSpell"
+    damage: 3
+    range: 8
+    ignore-armor: false
+    obey-los: true
+    can-target: nonplayers
+    check-plugins: true
+TOSStornado:
+    spell-class: ".targeted.ForcetossSpell"
+    range: 15
+    damage: 0
+    horizontal-force: -8
+    vertical-force: 14
+    obey-los: true
+    can-target: players,nonplayers
+    check-plugins: true
+SLOWtornado:
+    spell-class: ".targeted.PotionEffectSpell"
+    range: 20
+    type: 2
+    strength: 4
+    duration: 100
+    targeted: true
+    can-target: players,nonplayers
+    obey-los: true
+DESTROYtornado1:
+    spell-class: ".targeted.DestroySpell"
+    horiz-radius: 4
+    vert-radius: 4
+    velocity: 1
+    velocity-type: fountain
+    block-types-to-throw:
+        - 13
+        - 17
+        - 86
+        - 89
+        - 91
+        - 99
+        - 100
+        - 124
+        - 144
+        - 145
+        - 162
+        - 170
+        - 174
+    block-types-to-remove:
+        - 6
+        - 18
+        - 20
+        - 26
+        - 27
+        - 28
+        - 30
+        - 31
+        - 32
+        - 37
+        - 38
+        - 39
+        - 40
+        - 50
+        - 51
+        - 55
+        - 63
+        - 64
+        - 65
+        - 66
+        - 68
+        - 69
+        - 78
+        - 81
+        - 83
+        - 85
+        - 92
+        - 93
+        - 94
+        - 95
+        - 96
+        - 101
+        - 102
+        - 106
+        - 107
+        - 111
+        - 113
+        - 127
+        - 131
+        - 132
+        - 157
+        - 160
+        - 161
+        - 171
+        - 175
+DESTROYtornado2:
+    spell-class: ".targeted.DestroySpell"
+    horiz-radius: 3
+    vert-radius: 3
+    velocity: 1
+    velocity-type: fountain
+    block-types-to-throw:
+        - 13
+        - 17
+        - 86
+        - 89
+        - 91
+        - 99
+        - 100
+        - 124
+        - 144
+        - 145
+        - 162
+        - 170
+        - 174
+        - 19
+    block-types-to-remove:
+        - 6
+        - 18
+        - 20
+        - 26
+        - 27
+        - 28
+        - 30
+        - 31
+        - 32
+        - 37
+        - 38
+        - 39
+        - 40
+        - 50
+        - 51
+        - 55
+        - 63
+        - 64
+        - 65
+        - 66
+        - 68
+        - 69
+        - 78
+        - 81
+        - 83
+        - 85
+        - 92
+        - 93
+        - 94
+        - 95
+        - 96
+        - 101
+        - 102
+        - 106
+        - 107
+        - 111
+        - 113
+        - 127
+        - 131
+        - 132
+        - 157
+        - 160
+        - 161
+        - 171
+        - 175
+DESTROY_PROJECTILEtornado1:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 8
+    particle-count: 5
+    tick-interval: 1
+    projectile-gravity: 0
+    particle-horizontal-spread: 0.6
+    particle-vertical-spread: 0.6
+    particle-name: townaura
+    stop-on-hit-entity: false
+    hit-air-at-end: false
+    hit-radius: 1.5
+    hit-air-during: true
+    spell-interval: 10
+    render-distance: 70
+    max-distance: 70
+    hit-players: false
+    hit-non-players: false
+    hug-surface: true
+    height-from-surface: 11
+    max-duration: 11
+    spell: DESTROYtornado1
+DESTROY_PROJECTILEtornado2:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 8
+    particle-count: 5
+    tick-interval: 1
+    projectile-gravity: 0
+    particle-horizontal-spread: 0.6
+    particle-vertical-spread: 0.6
+    particle-name: townaura
+    stop-on-hit-entity: false
+    hit-air-at-end: false
+    hit-radius: 1.5
+    hit-air-during: true
+    spell-interval: 8
+    render-distance: 70
+    max-distance: 70
+    hit-players: false
+    hit-non-players: false
+    hug-surface: true
+    height-from-surface: 8
+    max-duration: 11
+    spell: DESTROYtornado2
+DESTROY_PROJECTILEtornado3:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 8
+    particle-count: 5
+    tick-interval: 1
+    projectile-gravity: 0
+    particle-horizontal-spread: 0.6
+    particle-vertical-spread: 0.6
+    particle-name: townaura
+    stop-on-hit-entity: false
+    hit-air-at-end: false
+    hit-radius: 1.5
+    hit-air-during: true
+    spell-interval: 8
+    render-distance: 70
+    max-distance: 70
+    hit-players: false
+    hit-non-players: false
+    hug-surface: true
+    height-from-surface: 5
+    max-duration: 11
+    spell: DESTROYtornado2
+DESTROY_PROJECTILEtornado4:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 8
+    particle-count: 5
+    tick-interval: 1
+    projectile-gravity: 0
+    particle-horizontal-spread: 0.6
+    particle-vertical-spread: 0.6
+    particle-name: townaura
+    stop-on-hit-entity: false
+    hit-air-at-end: false
+    hit-radius: 1.5
+    hit-air-during: true
+    spell-interval: 8
+    render-distance: 70
+    max-distance: 70
+    hit-players: false
+    hit-non-players: false
+    hug-surface: true
+    height-from-surface: 2
+    max-duration: 11
+    spell: DESTROYtornado2
+PROJECTILEtornado:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 8
+    particle-count: 0
+    tick-interval: 1
+    special-effect-interval: 1
+    projectile-gravity: 0
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    particle-name: largeexplode
+    stop-on-hit-entity: false
+    hit-radius: 7
+    vertical-hit-radius: 6
+    hit-air-during: false
+    spell-interval: 20
+    render-distance: 70
+    max-distance: 70
+    hit-players: true
+    hug-surface: true
+    height-from-surface: 1.5
+    max-duration: 11
+    spell: AOEtornado
+    effects:
+      tornado1:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.1
+        vert-spread: 0.1
+        speed: 0.1
+        count: 5
+        y-offset: 1.0
+      tornado2:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.1
+        vert-spread: 0.1
+        speed: 0.1
+        count: 5
+        y-offset: 2.0
+      tornado3:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.1
+        count: 5
+        y-offset: 4.0
+      tornado4:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.6
+        vert-spread: 0.6
+        speed: 0.1
+        count: 5
+        y-offset: 5.0
+      tornado5:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.3
+        vert-spread: 0.3
+        speed: 0.1
+        count: 5
+        y-offset: 6.0
+      tornado6:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.6
+        vert-spread: 0.6
+        speed: 0.1
+        count: 5
+        y-offset: 8.0
+      tornado7:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 1.3
+        vert-spread: 1.3
+        speed: 0.1
+        count: 5
+        y-offset: 9.0
+      tornado8:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.6
+        vert-spread: 0.6
+        speed: 0.1
+        count: 5
+        y-offset: 11.0
+      tornado9:
+        position: special
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 1.5
+        vert-spread: 1.5
+        speed: 0.1
+        count: 5
+        y-offset: 12.0
+      sound1:
+        position: caster
+        effect: sound
+        sound: mob.wither.death
+        volume: 2.0
+        pitch: 1.0
+      sound2:
+        position: target
+        effect: sound
+        sound: mob.wither.death
+        volume: 1.0
+        pitch: 1.0
+echest:
+    spell-class: ".instant.EnderchestSpell"
+    name: echest
+    spell-icon: ender_chest
+    description: Opens your ender chest inventory.
+magiccenter:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    spells:
+        - mc1
+        - mc2
+        - mc3
+        - mc4
+        - mc5
+        - mc1
+        - DELAY 5
+        - mc1
+        - mc2
+        - mc3
+        - mc4
+        - mc5
+        - mc1
+        - DELAY 5
+mc1:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    projectile-gravity: 0
+    tick-interval: 1
+    particle-name: flame
+    particle-count: 50
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    max-distance: .3
+    max-duration: .5
+    spell: geyser
+mc2:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    projectile-gravity: 0.08
+    tick-interval: 2
+    particle-name: heart
+    particle-count: 18
+    particle-horizontal-spread: 0.5
+    particle-vertical-spread: 0.3
+    max-distance: 2
+    max-duration: 18
+    spell: forcepush
+mc3:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    projectile-gravity: 0.08
+    tick-interval: 2
+    particle-name: enchantmenttable
+    particle-count: 18
+    particle-horizontal-spread: 0.5
+    particle-vertical-spread: 0.3
+    max-distance: 2
+    max-duration: 18
+    spell: geyser
+mc6:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    projectile-gravity: 0.08
+    tick-interval: 2
+    particle-name: portal
+    particle-count: 18
+    particle-horizontal-spread: 0.5
+    particle-vertical-spread: 0.3
+    max-distance: 2
+    max-duration: 18
+    spell: geyser
+mc4:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0.5
+    projectile-gravity: 0.08
+    tick-interval: 2
+    particle-name: largesmoke
+    particle-count: 18
+    particle-horizontal-spread: 0.5
+    particle-vertical-spread: 0.3
+    max-distance: 2
+    max-duration: 18
+    spell: forcepush
+mc5:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    projectile-gravity: 0.08
+    tick-interval: 2
+    particle-name: lava
+    particle-count: 18
+    particle-horizontal-spread: 0.3
+    particle-vertical-spread: 0.3
+    max-distance: 2
+    max-duration: 18
+    spell: geyser
+beam:
+    spell-class: ".instant.BeamSpell"
+    beam-width: 2
+    y-offset: 0
+    max-distance: 50
+    interval: 0.25
+    spell: geyser
+    effects:
+        - special particles reddust
+hex_spell:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    cast-item: hexwand
+    modifiers:
+      - name HexielDark required
+    cost:
+        - mana 20
+    str-cost: 5 redstone dust
+    spells:
+        - hex1
+        - hex2
+        - hex3
+        - hexturret
+        - DELAY 5
+        - hexprayer
+hex3:
+    spell-class: ".buff.DummySpell"
+    duratuon: 60
+    effects:
+      3:
+        position: caster
+        effect: sound
+        sound: mob.enderdragon.end
+hex1:
+    spell-class: ".buff.DummySpell"
+    name: gh1
+    duration: 60
+    effects:
+      wind1:
+        position: orbit
+        orbit-radius: 3.0
+        orbit-seconds-per-revolution: 2
+        orbit-counter-clockwise: true 
+        orbit-tick-interval: 1
+        orbit-y-offset: 1.0
+        effect: particles
+        particle-name: smoke
+        horiz-spread: 0.1
+        vert-spread: 1
+        speed: .001
+        count: 200
+        y-offset: 0
+hex2:
+    spell-class: ".buff.DummySpell"
+    name: gh2
+    duration: 60
+    effects:
+      wind1:
+        position: orbit
+        orbit-radius: 3.0
+        orbit-seconds-per-revolution: 2
+        orbit-counter-clockwise: false
+        orbit-tick-interval: 1
+        orbit-y-offset: 1.0
+        effect: particles
+        particle-name: smoke
+        horiz-spread: 0.1
+        vert-spread: 1
+        speed: .001
+        count: 200
+        y-offset: 0
+hexpurge:
+    spell-class: ".instant.PurgeSpell"
+    name: ghpurge
+    spell-icon: potion:16396
+    description: Kill all monsters and animals around you.
+    range: 100
+    str-cast-self: You purge all life around you.
+    str-cast-others: "%a purges all nearby life."
+hexturret:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 50
+    vertical-radius: 50
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: false
+    max-targets: 100
+    spell-source-in-center: true
+    spells:
+        - hex_missile
+
+hex_missile:
+    spell-class: ".targeted.HomingMissileSpell"
+    projectile-velocity: 4
+    projectile-inertia: 0
+    particle-name: portal
+    particle-speed: 0
+    particle-count: 25
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    y-offset: 1.2
+    max-duration: 60
+    target-players: true
+    spell: geyser
+    effects:
+        - caster spawn
+        - target particles footstep 0.3 10 0 100 0
+hexturret_pain:
+    spell-class: ".targeted.PainSpell"
+    damage: 100
+    range: 100
+    ignore-armor: false
+    obey-los: true
+    target-players: true
+    check-plugins: true
+hexprayer:
+    spell-class: ".instant.PrayerSpell"
+    name: ghprayer
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cooldown: 15
+    amount-healed: 100
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
