@@ -1,0 +1,11 @@
+Swammiewand_effects
+Weetigo
+help
+list
+magicquest_menustart
+magicquest_runestone_healing
+magicquest_runestone_homecoming
+magicquest_runestone_worlding
+magicquest_scroll_mark
+skywars_basicarrow
+spawn

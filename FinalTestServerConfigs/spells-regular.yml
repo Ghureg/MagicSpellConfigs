@@ -1,0 +1,4844 @@
+bat:
+    spell-class: ".targeted.DisguiseSpell"
+    entity-type: bat
+    target-self: true
+    toggle: true
+    duration: 0
+Swammiewand_effects:
+        spell-class: ".TargetedMultiSpell"
+        cast-item: Swamwand
+        always-granted: true
+        cast-time: 10
+        check-individual-cooldowns: false
+        require-entity-target: true
+        target-players: true
+        spells:
+            - swamwand_speed
+            - swamwand_dissy
+            - swamwand_jump
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+            - swamwand_night
+            - DELAY 80
+            - swamwand_dark
+            - DELAY 60
+swamwand_speed:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    range: 20
+    type: 1
+    strength: 10
+    duration: 600
+    targeted: true
+    target-players: true
+    target-non-players: false
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+    effects:
+      3:
+        position: caster
+        effect: sound
+        sound: records.chirp
+        volume: 4
+swamwand_dissy:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    range: 20
+    type: 9
+    strength: 5
+    duration: 600
+    targeted: true
+    target-players: true
+    target-non-players: false
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+swamwand_jump:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    range: 20
+    type: 8
+    strength: 5
+    duration: 600
+    targeted: true
+    target-players: true
+    target-non-players: false
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+swamwand_night:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    range: 20
+    type: 16
+    strength: 5
+    duration: 80
+    targeted: true
+    target-players: true
+    target-non-players: false
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+swamwand_dark:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    range: 20
+    type: 15
+    strength: 5
+    duration: 80
+    targeted: true
+    target-players: true
+    target-non-players: false
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+Zombiesgame:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    spells:
+        - Zombies
+        - DELAY 4
+        - Zombies
+        - DELAY 4
+        - Zombies
+        - DELAY 4
+        - Zombies
+        - DELAY 20
+        - Zombies
+        - DELAY 2
+        - Zombies
+        - DELAY 10
+        - Zombies
+Zombies:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    can-cast-by-command: false
+    location: random
+    entity-type: zombie
+    baby: true
+    range: 20
+    attributes:
+      - "generic.maxHealth 50 add"
+      - "generic.followRange 100 add"
+      - "generic.attackDamage 10 add"
+      - "zombie.spawnReinforcements 20 add"
+magicquest_menustart:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers:
+        - rightclickentity witch
+    spells:
+        - magicquest_menu
+magicquest_shopkeep:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    location: target
+    entity-type: witch
+    nameplate-text: "Merchent"
+    range: 10
+    potion-effects:
+      - 10 8000000000 800
+    remove-ai: true
+    attributes:
+      - "generic.maxHealth 600 add"
+magicquest_menu:
+    spell-class: ".MenuSpell"
+    title: "Magic Shop"
+    options:
+        firewand:
+            slot: 11
+            item:
+                type: blaze_rod
+                name: "&cFire Wand"
+            spell: magicquest_menu_firewand
+            modifiers:
+                - day required
+        frostwand:
+            slot: 12
+            item:
+                type: stick
+                name: "&3Frost Wand"
+            spell: magicquest_menu_frostwand
+            modifiers:
+                - day required
+        arcanewand:
+            slot: 13
+            item:
+                type: bone
+                name: "&0Arcane Wand"
+            spell: magicquest_menu_arcanewand
+            modifiers:
+                - day required
+        lightwand:
+            slot: 14
+            item:
+                type: feather
+                name: "&eLight Wand"
+            spell: magicquest_menu_lightwand
+            modifiers:
+                - day required
+        legwand:
+            slot: 11
+            item:
+                type: stick
+                name: "&dLegendary Wand"
+            spell: magicquest_menu_legenedarywand
+            modifiers:
+                - night required
+        earthwand:
+            slot: 12
+            item:
+                type: stick
+                name: "&dEarth Wand"
+            spell: magicquest_menu_earthwand
+            modifiers:
+                - night required
+        necrowand:
+            slot: 13
+            item:
+                type: blaze_rod
+                name: "&cNecromancy Staff"
+            spell: magicquest_menu_necrowand
+            modifiers:
+                - night required
+        enchwand:
+            slot: 14
+            item:
+                type: feather
+                name: "&dEnchanter Quill"
+            spell: magicquest_menu_enchanterwand
+            modifiers:
+                - night required
+        armor:
+            slot: 20
+            item:
+                type: diamond_chestplate
+                name: "&dRecive Magic robes"
+            spell: magicquest_armor
+        sommon:
+            slot: 15
+            item:
+                type: paper
+                name: "&dScroll of marking"
+            spell: magicquest_menu_markscroll
+        home:
+            slot: 21
+            item:
+                type: clay_ball
+                name: "&dHomestone"
+            spell: magicquest_menu_homestone
+        world:
+            slot: 22
+            item:
+                type: clay_ball
+                name: "&dSpawnstone"
+            spell: magicquest_menu_worldstone
+        ghring:
+            slot: 18
+            item:
+                type: emerald
+                name: "&dRing of power"
+            spell: magicquest_menu_ghring
+            modifiers:
+                - name Ghureg required
+        caring:
+            slot: 18
+            item:
+                type: emerald
+                name: "&dRing of power"
+            spell: magicquest_menu_gcaring
+            modifiers:
+                - name Sir_Calibur required
+        thring:
+            slot: 18
+            item:
+                type: emerald
+                name: "&dRing of power"
+            spell: magicquest_menu_threering
+            modifiers:
+                - magicxpabove wizardery:2 required
+magicquest_runestone_worlding:
+    spell-class: ".instant.GateSpell"
+    always-granted: true
+    cast-time: 40
+    spell-icon: portal
+    cast-item: magicquest_runestone_worlding
+    description: Teleport to spawn.
+    world: CURRENT
+    coordinates: SPAWN
+    effects:
+      1:
+        position: pos1
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.2
+        vert-spread: 1
+        speed: 0.2
+        count: 8
+      2:
+        position: pos2
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+magicquest_scroll_mark:
+    spell-class: ".instant.MarkSpell"
+    spell-icon: bed
+    always-granted: true
+    cast-item: magicquest_scroll_mark
+    description: Marks your location for later recall.
+    cooldown: 100
+    permanent-marks: true
+    effects:
+      1:
+        position: caster
+        effect: particles
+        particle-name: reddust
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+    cost:
+        - magicquest_scroll_mark 1
+    str-cast-self: You have placed a returning rune down.
+magicquest_runestone_homecoming:
+    spell-class: ".instant.RecallSpell"
+    mark-spell: "magicquest_scroll_mark"
+    cast-item: magicquest_runestone_homestone
+    always-granted: true
+    spell-icon: compass
+    description: Teleports you to your marked location.
+    max-range: -1
+    allow-cross-world: true
+    use-bed-location: false
+    cost:
+        - mana 75
+    effects:
+      1:
+        position: pos1
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.2
+        vert-spread: 1
+        speed: 0.2
+        count: 8
+      2:
+        position: pos2
+        effect: particles
+        particle-name: largeexplode
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+magicquest_menu_homestone:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_runestone_homestone 1 100%
+magicquest_menu_worldstone:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_runestone_worlding 1 100%
+magicquest_menu_markscroll:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_scroll_mark 1 100%
+magicquest_menu_firewand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_firewand 1 100%
+magicquest_menu_ghring:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - Ghureg_ring 1 100%
+magicquest_menu_gcaring:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - cali_ring 1 100%
+magicquest_menu_threering:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - three_ring 1 100%
+magicquest_menu_frostwand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_frostwand 1 100%
+magicquest_menu_arcanewand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_arcanewand 1 100%
+magicquest_menu_lightwand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_lightwand 1 100%
+magicquest_menu_legenedarywand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_legendarywand 1 100%
+magicquest_menu_necrowand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_necrowand 1 100%
+magicquest_menu_earthwand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_earthwand 1 100%
+magicquest_menu_enchanterwand:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - magicquest_enchanterwand 1 100%
+magicquest_cali_buff:
+    spell-class: ".MultiSpell"
+    cast-item: cali_ring
+    modifiers:
+        - wearing 388 required
+    cooldown: 15
+    check-individual-cooldowns: false
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    spells:
+        - magicquest_cali_buff1
+        - magicquest_cali_buff2
+        - magicquest_cali_buff3
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_cali_buff1:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blindness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 1
+    strength: 5
+    duration: 100
+    targeted: false
+    target-players: true
+    target-non-players: false
+    modifiers:
+        - wearing 388 required
+    obey-los: false
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_cali_buff2:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blindness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 10
+    strength: 5
+    duration: 100
+    targeted: false
+    target-players: true
+    target-non-players: false
+    modifiers:
+        - wearing 388 required
+    obey-los: false
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_cali_buff3:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blindness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 11
+    strength: 5
+    duration: 100
+    targeted: false
+    target-players: true
+    target-non-players: false
+    modifiers:
+        - wearing 388 required
+    obey-los: false
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_breath:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: cali_ring
+    modifiers:
+        - wearing 388 required
+    projectile-velocity: 10
+    cast-time: 40
+    projectile-gravity: 0
+    projectile-spread: 0
+    particle-speed: 0
+    tick-interval: 2
+    particle-name: flame
+    particle-count: 100
+    particle-horizontal-spread: 1
+    particle-vertical-spread: 0.5
+    hit-players: true
+    hit-non-players: true
+    stop-on-hit-entity: false
+    hit-ground: false
+    hit-radius: 1.2
+    vertical-hit-radius: 3
+    max-distance: 30
+    max-duration: 20
+    spell: magicquest_wizardery_pain
+    effects:
+      3:
+        position: caster
+        effect: sound
+        sound: mob.enderdragon.growl
+        volume: 1
+        pitch: -8
+    cost:
+        - mana 20
+    str-cost: 20 Mana
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_beam:
+    spell-class: ".instant.BeamSpell"
+    cast-item: cali_ring
+    modifiers:
+        - wearing 388 required
+    duration: 15
+    beam-width: 2
+    y-offset: 0
+    max-distance: 30
+    interval: 0.25
+    spell: magicquest_wizardery_pain1
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: flame
+        horiz-spread: .01
+        vert-spread: .01
+        speed: 0
+        count: 20
+      3:
+        position: caster
+        effect: sound
+        sound: mob.blaze.hit
+        volume: 2
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+    cost:
+       - mana 10
+        - hunger 2
+    str-cost: 10 mana and one hunger .
+magicquest_wizardery_pain1:
+    spell-class: ".targeted.PainSpell"
+    spell-icon: bone
+    description: Cause your enemy pain.
+    damage: 10
+    range: 10
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    target-non-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 10
+        - hunger 2
+    str-cost: 10 mana and a hunch of hunger
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_pain:
+    spell-class: ".targeted.PainSpell"
+    spell-icon: bone
+    description: Cause your enemy pain.
+    damage: 20
+    range: 10
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    target-non-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 10
+        - hunger 2
+    str-cost: 10 mana and a hunch of hunger
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_raisearmy:
+    spell-class: ".MultiSpell"
+    cast-item: three_ring
+    check-individual-cooldowns: false
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    spells:
+        - magicquest_wizardery_raisedeads
+        - DELAY 5
+        - magicquest_wizardery_raisedeadz
+        - DELAY 5
+        - magicquest_wizardery_raisedeads
+        - DELAY 5
+        - magicquest_wizardery_raisedeadz
+        - DELAY 5
+        - magicquest_wizardery_raisedeads
+        - DELAY 5
+        - magicquest_wizardery_raisedeadz
+        - DELAY 5
+        - magicquest_wizardery_raisedeads
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_raisedeadz:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    modifiers:
+        - wearing 388 required
+    location: target
+    entity-type: zombie
+    baby: true
+    holding: magicquest_necrowand
+    range: 30
+    helmet: "314"
+    potion-effects:
+      - 1 5000 0
+    nameplate-text: "Undead Corps"
+    attributes:
+      - "generic.maxHealth 10 add"
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_raisedeads:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    modifiers:
+        - wearing 388 required
+    location: target
+    entity-type: skeleton
+    baby: true
+    holding: bow
+    range: 30
+    helmet: "314"
+    potion-effects:
+      - 1 5000 0
+    nameplate-text: "Undead Skelly"
+    attributes:
+      - "generic.maxHealth 10 add"
+      - "generic.followRange 20 add"
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_runestone_healing:
+    spell-class: ".instant.PrayerSpell"
+    always-granted: true
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cast-item: magicquest_runestone_healing
+    amount-healed: 20
+    cooldown: 100
+    cast-time: 10
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
+magicquest_scroll_volley:
+    spell-class: ".targeted.VolleySpell"
+    spell-icon: 261
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    description: Send a volley of arrows at your targeted location.
+    right-click-cast-item: magicquest_scroll_volly
+    range: 30
+    arrows: 20
+    speed: 20
+    spread: 150
+    fire: 800
+    shoot-interval: 0
+    remove-delay: 0
+    no-target: true
+    cost:
+        - magicquest_scroll_volly 1
+        - 262 2
+    str-cost: 3 redstone dust and 2 arrows
+    str-cast-self: You fire a volley of magic arrows.
+    str-cast-others: "%a fires a volley of arrows."
+    str-no-target: No target found.
+    xp-required:
+      - fire 1
+    xp-granted:
+      - fire 10
+magicquest_scroll_waterbreathing:
+    spell-class: ".buff.GillsSpell"
+    spell-icon: gold_helmet
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    description: Allows you to breath underwater.
+    right-click-cast-item: magicquest_scroll_waterbreathing
+    glass-head-effect: false
+    cooldown: 60
+    duration: 300
+    num-uses: 5
+    cost:
+        - mana 50
+        - magicquest_scroll_waterbreathing
+    use-cost:
+        - sugar_cane 1
+    use-cost-interval: 1
+    str-cost: 50 mana and 1 sugar cane, plus 1 sugar cane few seconds
+    str-cast-self: You form gills on your neck!
+    str-fade: Your gills disappear.
+    xp-required:
+      - frost 1
+    xp-granted:
+      - frost 10
+magicquest_scroll_deathscream:
+    spell-class: ".TargetedMultiSpell"
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    right-click-cast-item: magicquest_scroll_deathscream
+    cooldown: 0
+    check-individual-cooldowns: false
+    require-entity-target: false
+    target-players: true
+    cost:
+        - 41 1
+        - magicquest_scroll_deathscream 1
+        - mana 10
+    str-cost: gold block
+    spells:
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+        - DELAY 10
+        - magicquest_scroll_death
+    xp-required:
+      - arcane 1
+    xp-granted:
+      - arcane 10
+magicquest_scroll_death:
+    spell-class: ".targeted.AreaEffectSpell"
+    description: summons a mob that screams death with all that aproch it.
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    horizontal-radius: 5
+    vertical-radius: 5
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: true
+    spells:
+        - magicquest_scroll_poison
+    cooldown: 15
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: largesmoke
+        horiz-spread: 5
+        vert-spread: 5
+        speed: 0
+        count: 300
+    str-cost: gold block
+    str-cast-self: You call down a lightning storm!
+    xp-required:
+      - arcane 1
+    xp-granted:
+      - arcane 1
+magicquest_scroll_poison:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    cooldown: 15
+    range: 20
+    type: 19
+    strength: 1
+    duration: 8000
+    targeted: true
+    target-players: true
+    target-non-players: true
+    obey-los: true
+    cost:
+        - mana 12
+    str-cost: 12 mana
+    str-cast-self: You have poisoned your target!
+    str-no-target: No target found.
+    effects:
+      1:
+        position: target
+        effect: sound
+        sound: mob.ghast.scream
+        volume: 2
+        pitch: -8
+    xp-required:
+      - arcane 1
+    xp-granted:
+      - arcane 1
+magicquest_scroll_thunderstorm:
+    spell-class: ".targeted.AreaEffectSpell"
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    spell-icon: gold_sword
+    description: Strike lightning upon all nearby enemies.
+    right-click-cast-item: magicquest_scroll_thrunderstorm
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: true
+    can-target: players,monsters,animals
+    spells:
+        - magicquest_scroll_lightning
+    cooldown: 15
+    cost:
+        - magicquest_scroll_thrunderstorm 1
+        - mana 50
+    str-cost: 50 mana
+    str-no-target: No target found.
+    xp-required:
+      - light 30
+    xp-granted:
+      - light 2
+magicquest_scroll_lightning:
+    spell-class: ".targeted.LightningSpell"
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    spell-icon: gold_sword
+    description: Call down lightning.
+    cooldown: 15
+    range: 20
+    additional-damage: 5
+    no-damage: false
+    require-entity-target: false
+    check-plugins: true
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-no-target: No target found.
+    xp-required:
+      - light 30
+    xp-granted:
+      - light 2
+magicquest_earth:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 1
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 0
+        effect: itemspray
+        type: 1
+        quantity: 1
+        duration: 20
+        force: 0
+    xp-required:
+      - frost 25000
+    xp-granted:
+      - earth 1
+magicquest_earth_wave:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_earthwand
+    modifiers:
+        - wearing 388 required
+    projectile-velocity: 10
+    projectile-gravity: 0
+    projectile-spread: 0
+    hug-surface: true
+    height-from-surface: 0.5
+    particle-speed: 0
+    tick-interval: 2
+    particle-name: blockcrack_3
+    particle-count: 100
+    particle-horizontal-spread: 1
+    particle-vertical-spread: 0.5
+    hit-players: true
+    stop-on-hit-entity: false
+    hit-ground: false
+    hit-radius: 1.2
+    vertical-hit-radius: 3
+    max-distance: 30
+    max-duration: 20
+    spell: magicquest_earth_multi
+    cost:
+        - mana 10
+    str-cost: 10 Mana
+    xp-required:
+      - earth 1
+    xp-granted:
+      - earth 1
+magicquest_earth_multi:
+    spell-class: ".TargetedMultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: false
+    require-entity-target: true
+    target-players: true
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_earth_bomb
+        - magicquest_earth_pain
+    xp-required:
+      - earth 1
+    xp-granted:
+      - earth 1
+magicquest_earth_bomb:
+    spell-class: ".targeted.ForcetossSpell"
+    spell-icon: piston_base
+    description: Magically throw an enemy into the air.
+    can-cast-by-command: false
+    cooldown: 5
+    range: 15
+    damage: 2
+    horizontal-force: 15
+    vertical-force: 5
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: An explosion of energy pushes your enemies around.
+    effects:
+      2:
+        position: target
+        effect: particles
+        particle-name: blockcrack_4
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 40
+    xp-required:
+      - earth 1
+    xp-granted:
+      - earth 1
+magicquest_earth_pain:
+    spell-class: ".targeted.PainSpell"
+    spell-icon: bone
+    can-cast-by-command: false
+    description: Cause your enemy pain.
+    damage: 5
+    range: 15
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    xp-required:
+      - earth 1
+    xp-granted:
+      - earth 1
+magicquest_earth_stoneskin:
+    spell-class: ".MultiSpell"
+    cast-item: magicquest_earthwand
+    modifiers:
+        - wearing 388 required
+    cooldown: 30
+    check-individual-cooldowns: false
+    cost:
+        - mana 10
+    spells:
+        - magicquest_earth_slowness
+        - DELAY 10
+        - magicquest_earth_skin
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 1
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 0
+        effect: itemspray
+        type: 1
+        quantity: 1
+        duration: 20
+        force: 0
+    xp-required:
+      - earth 250
+    xp-granted:
+      - earth 2
+magicquest_earth_skin:
+    spell-class: ".buff.InvulnerabilitySpell"
+    spell-icon: gold_chestplate
+    description: Makes you invulnerable to damage.
+    toggle: false
+    damage-causes:
+        - block explosion
+        - contact
+        - custom
+        - drowning
+        - entity attack
+        - entity explosion
+        - fall
+        - fire
+        - fire tick
+        - lava
+        - lightning
+        - magic
+        - poison
+        - projectile
+        - suffocation
+        - void
+        - wither
+    duration: 60
+    cooldown: 30
+    spell: magicquest_earth_slowness
+    cost:
+        - mana 60
+        - hunger 2
+    use-cost: 
+        - hunger 1
+    use-cost-interval: 5
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 1
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 0
+        effect: itemspray
+        type: 1
+        quantity: 1
+        duration: 20
+        force: 0
+      1:
+        position: orbit
+        orbit-radius: 1
+        orbit-seconds-per-revolution: 3
+        orbit-counter-clockwise: true
+        orbit-tick-interval: 2
+        orbit-y-offset: 0
+        effect: itemspray
+        type: 7
+        quantity: 1
+        duration: 20
+        force: 0
+    xp-required:
+      - earth 50
+    xp-granted:
+      - earth 2
+magicquest_earth_slowness:
+    spell-class: ".targeted.PotionEffectSpell"
+    spell-icon: spider_eye
+    description: Poison your target.
+    cooldown: 15
+    range: 20
+    type: 2
+    strength: 888888888
+    duration: 1200
+    targeted: false
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    str-no-target: No target found.
+    xp-required:
+      - earth 50
+    xp-granted:
+      - earth 2
+magicquest_earth_stonevision:
+    spell-class: ".buff.StonevisionSpell"
+    spell-icon: stone
+    cast-item: magicquest_earthwand
+    description: See through stone.
+    range: 8
+    transparent-type: 1
+    unobfuscate: false
+    cooldown: 60
+    duration: 5
+    cost: 
+        - mana 50
+        - stone 32
+    str-cost: 50 mana, 32 stone,
+    str-fade: You can no longer see through stone.
+    xp-required:
+      - earth 2500
+    xp-granted:
+      - earth 5
+magicquest_lab:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_firewand
+    projectile-velocity: 0
+    tick-interval: 1
+    particle-name: witchMagic
+    particle-horizontal-spread: 0.01
+    particle-vertical-spread: 0.01
+    particle-speed: 0.001
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_armor
+magicquest_armor:
+    spell-class: ".buff.ArmorSpell"
+    toggle: true
+    permanent: true
+    replace: true
+    helmet: magicquest_armor
+    chestplate: magicquest_armor
+    leggings: magicquest_armor
+    boots: magicquest_armor
+    str-cast-self: You have recived magic robes! Do not remove them!
+    str-has-armor: You cannot cast this spell if you are already wearing armor.
+magicquest_fire:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 0.3
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 1.5
+        effect: particles
+        particle-name: flame
+        horiz-spread: 0.01
+        vert-spread: 0.01
+        speed: 0.02
+        count: 10
+    xp-required:
+      - fire 0
+    xp-granted:
+      - fire 1
+magicquest_fire_fireball:
+    spell-class: ".targeted.FireballSpell"
+    name: magicquest_fire_fireball
+    cast-item: magicquest_firewand
+    spell-icon: fireball
+    description: Throw a fiery ball of destruction.
+    cast-item: magicquest_firewand
+    range: 20
+    require-entity-target: false
+    obey-los: true
+    target-players: false
+    check-plugins: true
+    damage-multiplier: 3
+    small-fireball: true
+    no-fire: false
+    no-explosion: false
+    no-explosion-effect: true
+    no-explosion-damage: 5
+    no-explosion-damage-range: 3
+    modifiers:
+        - wearing 388 required
+    cost: 
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: You cannot throw a fireball there.
+    xp-required:
+      - fire 1
+    xp-granted:
+      - fire 1
+magicquest_fire_flamethrow:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_firewand
+    projectile-velocity: 10
+    tick-interval: 1
+    particle-name: flame
+    particle-horizontal-spread: 0.01
+    particle-vertical-spread: 0.01
+    particle-speed: 0.05
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_fire_combust
+    cost: 
+        - mana 10
+    str-cost: 10 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - fire 250
+    xp-granted:
+      - fire 2
+magicquest_fire_combust:
+    spell-class: ".targeted.CombustSpell"
+    spell-icon: fire
+    can-cast-by-command: false
+    description: Set a target on fire.
+    obey-los: true
+    fire-ticks: 100
+    fire-tick-damage: 2
+    prevent-immunity: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - fire 100
+magicquest_fire_missile:
+    spell-class: ".targeted.HomingMissileSpell"
+    cast-item: magicquest_firewand
+    projectile-velocity: 4
+    max-duration: 3
+    projectile-inertia: 10
+    particle-name: lava
+    str-no-target: No target.
+    spell: magicquest_fire_explode
+    target-players: true
+    cost: 
+        - mana 20
+    str-cost: 20 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - fire 2500
+    xp-granted:
+      - fire 5
+magicquest_fire_explode:
+    spell-class: ".targeted.ExplodeSpell"
+    spell-icon: tnt
+    can-cast-by-command: false
+    description: Create an explosion.
+    cooldown: 30
+    range: 25
+    explosion-size: 2
+    backfire-chance: 3
+    prevent-block-damage: true
+    prevent-player-damage: false
+    damage-multiplier: 3
+    add-fire: false
+    simulate-tnt: false
+    ignore-canceled: false
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 40
+    str-cost: 40 mana
+    str-no-target: You cannot create an explosion there.
+    str-cast-self: Boom!
+    str-cast-others: Boom!
+    xp-required:
+      - fire 2500
+magicquest_frost:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 0.3
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 1.5
+        effect: particles
+        particle-name: splash
+        horiz-spread: 0.01
+        vert-spread: 0.01
+        speed: 0.02
+        count: 10
+    xp-required:
+      - frost 0
+    xp-granted:
+      - frost 1
+magicquest_frost_waterwalk:
+    spell-class: ".buff.WaterwalkSpell"
+    cast-item: magicquest_frostwand
+    name: magicquest_frost_waterwalk
+    spell-icon: boat
+    description: Walk across the water.
+    speed: 0.05
+    duration: 60
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    modifiers:
+        - wearing 388 required
+    cost: 
+        - mana 25
+    str-cost: 25 mana
+    use-cost:
+        - mana 5
+    use-cost-interval: 10
+    str-cost: 25 mana, plus 10 mana every 10 blocks moved
+    str-cast-self: You can now walk on water!
+    str-fade: You can no longer walk on water.
+    xp-required:
+      - frost 1
+    xp-granted:
+      - frost 1
+magicquest_frost_icethrow:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_frostwand
+    projectile-velocity: 10
+    tick-interval: 2
+    particle-name: snowballpoof
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_frost_entomb
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    xp-required:
+      - frost 250
+    xp-granted:
+      - frost 2
+magicquest_frost_entomb:
+    spell-class: ".targeted.EntombSpell"
+    can-cast-by-command: false
+    spell-icon: glass
+    description: Encase an enemy in ice.
+    cooldown: 5
+    range: 15
+    can-target: players,monsters,animals
+    tomb-block-type: 174
+    tomb-duration: 50
+    modifiers:
+        - wearing 388 required
+    str-no-target: No target found.
+    xp-required:
+      - frost 250
+magicquest_frost_missile:
+    spell-class: ".targeted.HomingMissileSpell"
+    cast-item: magicquest_frostwand
+    projectile-velocity: 3
+    projectile-inertia: 10
+    particle-speed: 0.05
+    particle-name: snowshovel
+    str-no-target: No target.
+    spell: magicquest_frost_geyser
+    target-players: true
+    cost: 
+        - mana 20
+    str-cost: 20 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - frost 2500
+    xp-granted:
+      - frost 500
+magicquest_frost_geyser:
+    spell-class: ".targeted.GeyserSpell"
+    spell-icon: water
+    description: Create a geyser of water at your enemy's feet.
+    can-cast-by-command: false
+    range: 20
+    damage: 5
+    velocity: 10
+    animation-speed: 2
+    geyser-height: 4
+    geyser-type: water
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: false
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 40
+    str-cost: 40 mana
+    str-cast-self: You create a geyser at your enemy's feet.
+    str-no-target: No target found.
+    xp-required:
+      - frost 2500
+magicquest_arcane:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 0.3
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 1.5
+        effect: particles
+        particle-name: witchMagic
+        horiz-spread: 0.01
+        vert-spread: 0.01
+        speed: 0.02
+        count: 10
+    xp-required:
+      - arcane 0
+    xp-granted:
+      - arcane 1
+magicquest_arcane_pain:
+    spell-class: ".targeted.PainSpell"
+    cast-item: magicquest_arcanewand
+    name: magicquest_arcane_pain
+    spell-icon: bone
+    description: Cause your enemy pain.
+    cast-item: magicquest_arcanewand
+    damage: 4
+    range: 10
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 10
+        - hunger 2
+    str-cost: 10 mana and a hunch of hunger
+    xp-required:
+      - arcane 1
+    xp-granted:
+      - arcane 1
+magicquest_arcane_eggthrow:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_arcanewand
+    projectile-velocity: 10
+    tick-interval: 2
+    particle-name: portal
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: false
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_arcane_capture
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    xp-required:
+      - arcane 250
+    xp-granted:
+      - arcane 2
+magicquest_arcane_capture:
+    spell-class: ".targeted.CaptureSpell"
+    item-lore: "egg"
+    can-cast-by-command: false
+    power-affects-quantity: true
+    can-target: monsters,animals
+    add-to-inventory: false
+    item-name: "&5%name%"
+    str-cast-self: "You have captured %t!"
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - arcane 250
+magicquest_arcane_stun:
+    spell-class: ".targeted.StunSpell"
+    cast-item: magicquest_arcanewand
+    cost: 
+        - mana 50
+    str-cost: 50 mana
+    duration: 10
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - arcane 2500
+    xp-granted:
+      - arcane 5
+magicquest_light:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 0.3
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        orbit-y-offset: 1.5
+        effect: particles
+        particle-name: cloud
+        horiz-spread: 0.01
+        vert-spread: 0.01
+        speed: 0.02
+        count: 10
+    xp-required:
+      - light 0
+    xp-granted:
+      - light 1
+magicquest_light_prayer:
+    spell-class: ".instant.PrayerSpell"
+    name: magicquest_light_prayer
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cast-item: magicquest_lightwand
+    amount-healed: 10
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
+    xp-required:
+      - light 1
+    xp-granted:
+      - light 1
+magicquest_light_lightningthing:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_lightwand
+    projectile-velocity: 10
+    tick-interval: 2
+    particle-name: cloud
+    particle-horizontal-spread: 0.1
+    particle-vertical-spread: 0.1
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_light_lightning
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    xp-required:
+      - light 250
+    xp-granted:
+      - light 2
+magicquest_light_lightning:
+    spell-class: ".targeted.LightningSpell"
+    spell-icon: gold_sword
+    can-cast-by-command: false
+    description: Call down lightning.
+    cooldown: 15
+    range: 20
+    additional-damage: 3
+    no-damage: false
+    require-entity-target: false
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    str-cast-self: You call down lightning.
+    str-cast-others: "%a calls down lightning."
+    str-no-target: Unable to find target.
+    xp-required:
+      - light 250
+magicquest_light_levitate:
+    spell-class: ".targeted.LevitateSpell"
+    cast-item: magicquest_lightwand
+    spell-icon: feather
+    description: Cause your target to fly through the air.
+    tick-rate: 5
+    duration: 15
+    cooldown: 30
+    range: 12
+    cancel-on-item-switch: true
+    cancel-on-spell-cast: true
+    can-target: monsters,animals,players
+    str-cast-self: You are levitating %t!
+    str-cast-target: "%a is levitating you!"
+    str-no-target: No target found.
+    modifiers:
+        - wearing 388 required
+    cost: 
+        - mana 50
+    str-cost: 50 mana
+    xp-required:
+      - light 2500
+    xp-granted:
+      - light 5
+magicquest_legendary:
+    spell-class: ".MultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: false
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_fire
+        - DELAY 4
+        - magicquest_frost
+        - DELAY 4
+        - magicquest_light
+        - DELAY 4
+        - magicquest_arcane
+        - DELAY 20
+        - magicquest_legendary_blindness
+        - DELAY 2
+        - magicquest_invisibility
+        - DELAY 10
+        - Ghuregring_dragonbirth
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 1
+magicquest_invisibility:
+    spell-class: ".buff.InvisibilitySpell"
+    name: invisibility
+    can-cast-by-command: false
+    spell-icon: 2266
+    description: Makes you invisible to players and monsters.
+    modifiers:
+        - wearing 388 required
+    effects:
+        - caster spawn
+        - disabled spawn
+    toggle: true
+    prevent-pickups: true
+    cancel-on-give-damage: true
+    cancel-on-logout: true
+    cancel-on-spell-cast: false
+    duration: 15
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 0
+magicquest_legendary_blindness:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 30
+    vertical-radius: 20
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: false
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_Nausea
+        - magicquest_blindness
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 0
+magicquest_Nausea:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: Nausea
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 9
+    strength: 200
+    duration: 8000
+    targeted: true
+    target-players: true
+    target-non-players: true
+    obey-los: true
+    can-cast-by-command: true
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 0
+magicquest_blindness:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blindness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 15
+    strength: 200
+    duration: 100
+    targeted: true
+    target-players: true
+    target-non-players: false
+    modifiers:
+        - wearing 388 required
+    obey-los: false
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 0
+Ghuregring_dragonbirth:
+    spell-class: ".instant.DummySpell"
+    can-cast-by-command: false
+    duration: 60
+    modifiers:
+        - wearing 388 required
+    effects:
+      1:
+        position: caster
+        effect: dragondeath
+    xp-required:
+      - fire 25000
+    xp-granted:
+      - legendary 0
+Ghuregring_knowledge:
+    spell-class: ".buff.DummySpell"
+    duration: 0
+    modifiers:
+        - wearing 388 required
+    effects:
+      1:
+        position: buff
+        effect-interval: 10
+        effect: particles
+        particle-name: enchantmenttable
+        horiz-spread: 0.18
+        vert-spread: 0.18
+        speed: 0
+        count: 18
+        y-offset: 1.8
+    xp-required:
+      - wizardery 0
+    xp-granted:
+      - wizardery 1
+      - fire 8000
+      - frost 8000
+      - acrane 8000
+      - light 8000
+      - legendary 8000
+      - necromancy 8000
+      - enchanter 8000
+      - earth 8000
+magicquest_wizardery_Flame:
+    spell-class: ".MultiSpell"
+    right-click-cast-item: Ghureg_ring
+    check-individual-cooldowns: false
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    spells:
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+        - DELAY 5
+        - magicquest_wizardery_fire
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_fire:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 18
+    tick-interval: 1
+    particle-name: enchantmenttable
+    particle-horizontal-spread: 0.008
+    particle-vertical-spread: 0.008
+    particle-speed: 0.008
+    max-distance: 88
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    modifiers:
+        - wearing 388 required
+    stop-on-hit-ground: true
+    spell: magicquest_wizardery_cumbust
+    effects:
+      3:
+        position: caster
+        effect: sound
+        sound: random.pop
+        volume: .5
+        pitch: -8
+    cost: 
+        - mana 10
+    str-cost: 10 mana
+    modifiers:
+        - wearing 388 required
+    xp-granted:
+      - wizardery 1
+    cost:
+       - mana 10
+        - hunger 2
+    str-cost: 10 mana and one hunger 
+magicquest_wizardery_cumbust:
+    spell-class: ".TargetedMultiSpell"
+    check-individual-cooldowns: false
+    require-entity-target: false
+    target-players: true
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_wizardery_fireplace
+        - magicquest_fire_combust
+        - magicquest_arcane_pain
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_fireplace:
+    spell-class: ".targeted.MaterializeSpell"
+    spell-icon: water_bucket
+    description: Summons a water spring into existence.
+    modifiers:
+        - wearing 388 required
+    range: 100
+    block-type: fire
+    reset-delay: 0
+    apply-physics: false
+    check-plugins: true
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_windwalk:
+    spell-class: ".buff.WindwalkSpell"
+    spell-icon: feather
+    enabled: true
+    description: Fly through the air.
+    modifiers:
+        - wearing 388 required
+    fly-speed: 0.05
+    launch-speed: 8
+    cancel-on-land: false
+    cancel-on-logout: true
+    cancel-on-teleport: false
+    duration: 888
+    cost:
+        - mana 25
+    use-cost:
+        - mana 5
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_disarm:
+    spell-class: ".targeted.DisarmSpell"
+    spell-icon: stone_sword:130
+    description: Disarm your opponent.
+    modifiers:
+        - wearing 388 required
+    cast-item: three_ring
+    range: 30
+    disarmable-items:
+        - blaze_rod
+        - stick
+        - book
+        - bone
+        - wood_sword
+        - stone_sword
+        - iron_sword
+        - diamond_sword
+        - bow
+    can-target: players,zombies,skeletons
+    disarm-duration: 200
+    dont-drop: true
+    prevent-theft: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+magicquest_wizardery_tbeam:
+    spell-class: ".instant.BeamSpell"
+    right-click-cast-item: three_ring
+    modifiers:
+        - wearing 388 required
+    duration: 15
+    beam-width: 2
+    y-offset: 0
+    max-distance: 30
+    interval: 0.25
+    spell: magicquest_wizardery_pain
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: witchMagic
+        horiz-spread: .01
+        vert-spread: .01
+        speed: 0
+        count: 20
+      3:
+        position: caster
+        effect: sound
+        sound: mob.magmacube.jump
+        volume: 1
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+    cost:
+       - mana 5
+        - hunger 1
+    str-cost: 10 mana and one hunger .
+magicquest_wizardery_gbeam:
+    spell-class: ".instant.BeamSpell"
+    cast-item: Ghureg_ring
+    modifiers:
+        - wearing 388 required
+    duration: 15
+    beam-width: 2
+    y-offset: 0
+    max-distance: 30
+    interval: 0.25
+    spell: magicquest_wizardery_pain
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: happyVillager
+        horiz-spread: .01
+        vert-spread: .01
+        speed: 0
+        count: 20
+      3:
+        position: caster
+        effect: sound
+        sound: mob.irongolem.hit
+        volume: 4
+    xp-required:
+      - wizardery 1
+    xp-granted:
+      - wizardery 1
+    cost:
+       - mana 5
+        - hunger 1
+    str-cost: 10 mana and one hunger .
+magicquest_necro:
+    spell-class: ".MultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: false
+    spells:
+        - magicquest_necropart
+        - DELAY 5
+        - magicquest_necrosound
+    xp-required:
+      - arcane 25000
+    xp-granted:
+      - necromancy 1
+magicquest_necrosound:
+    spell-class: ".buff.DummySpell"
+    can-cast-by-command: false
+    effects:
+      2:
+        position: caster
+        effect: sound
+        sound: mob.endermen.stare
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - necromancy 0
+magicquest_necropart:
+    spell-class: ".buff.DummySpell"
+    effects:
+      2:
+        position: caster
+        effect: particles
+        particle-name: witchMagic
+        horiz-spread: 3
+        vert-spread: 3
+        speed: 1
+        count: 200
+    can-cast-by-command: false
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - necromancy 0
+magicquest_necro_beam:
+    spell-class: ".instant.BeamSpell"
+    cast-item: magicquest_necrowand
+    modifiers:
+        - wearing 388 required
+    duration: 15
+    beam-width: 2
+    y-offset: 0
+    max-distance: 30
+    interval: 0.25
+    spell: magicquest_necro_pain
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: witchMagic
+        horiz-spread: .01
+        vert-spread: .01
+        speed: 1
+        count: 20
+    xp-required:
+      - necromancy 1
+    xp-granted:
+      - necromancy 1
+    cost:
+       - mana 10
+        - hunger 2
+    str-cost: 10 mana and one hunger 
+magicquest_necro_pain:
+    spell-class: ".targeted.PainSpell"
+    modifiers:
+        - wearing 388 required
+    description: Cause your enemy pain.
+    cooldown: 5
+    damage: 4
+    range: 15
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    xp-required:
+      - necromancy 1
+magicquest_necro_raisedead:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    cast-item: magicquest_necrowand
+    modifiers:
+        - wearing 388 required
+    location: target
+    entity-type: skeleton
+    holding: magicquest_necrowand
+    range: 10
+    potion-effects:
+      - 1 5000 0
+    attributes:
+      - "generic.maxHealth 10 add"
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - necromancy 250
+    xp-granted:
+      - necromancy 2
+    cost:
+       - mana 50
+       - health 1
+    str-cost: 50 mana and half a heart
+magicquest_necro_lavagun:
+    spell-class: ".targeted.AreaEffectSpell"
+    cast-item: magicquest_necrowand
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: false
+    target-players: true
+    fail-if-no-targets: true
+    spells:
+        - magicquest_necro_lava
+    modifiers:
+        - wearing 388 required
+    cost:
+       - mana 20
+    xp-required:
+      - necromancy 2500
+    xp-granted:
+      - necromancy 5
+magicquest_necro_lava:
+    spell-class: ".targeted.GeyserSpell"
+    spell-icon: water
+    description: Create a geyser of water at your enemy's feet.
+    range: 20
+    damage: 5
+    velocity: 30
+    animation-speed: 4
+    geyser-height: 10
+    geyser-type: lava
+    ignore-armor: true
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - necromancy 250
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You create a geyser at your enemy's feet.
+    str-no-target: No target found.
+magicquest_legendary_funfetty:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: magicquest_legendarywand
+    projectile-velocity: 10
+    tick-interval: 1
+    particle-name: magicCrit
+    particle-horizontal-spread: 0.01
+    particle-vertical-spread: 0.01
+    particle-speed: 0.05
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_legendary_funfetty_palser
+    cost: 
+        - mana 20
+    str-cost: 20 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 1
+    xp-granted:
+      - legendary 1
+magicquest_legendary_funfetty_area:
+    spell-class: ".targeted.AreaEffectSpell"
+    can-cast-by-command: false
+    horizontal-radius: 10
+    vertical-radius: 8
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: false
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_legendary_funfetty_pull
+    cooldown: 15
+    effects:
+      2:
+        position: special
+        effect: particles
+        particle-name: magicCrit
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 40
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 1
+magicquest_legendary_funfetty_palser:
+    spell-class: ".targeted.PulserSpell"
+    can-cast-by-command: false
+    spell-icon: diamond_block
+    description: Summons a diamond block that calls lightning down upon nearby enemies.
+    cooldown: 30
+    total-pulses: 20
+    interval: 1
+    max-distance: 15
+    cap-per-player: 30
+    block-type: air
+    unbreakable: true
+    only-count-on-success: false
+    modifiers:
+        - wearing 388 required
+    spells:
+        - magicquest_legendary_funfetty_area
+    xp-required:
+      - legendary 1
+magicquest_legendary_funfetty_pull:
+    spell-class: ".targeted.ForcetossSpell"
+    can-cast-by-command: false
+    spell-icon: piston_base
+    description: Magically throw an enemy into the air.
+    cooldown: 5
+    range: 15
+    damage: 2
+    horizontal-force: -10
+    vertical-force: 5
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: target
+        effect: particles
+        particle-name: happyVillager
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 40
+    xp-required:
+      - legendary 1
+magicquest_legendary_missle:
+    spell-class: ".targeted.HomingMissileSpell"
+    cast-item: magicquest_legendarywand
+    projectile-velocity: 2
+    projectile-inertia: 18
+    particle-name: enchantmenttable
+    particle-horizontal-spread: 0.01
+    particle-vertical-spread: 0.01
+    str-no-target: No target.
+    spell: magicquest_legendary_knowledgeforce
+    max-duration: 1800
+    target-players: true
+    target-non-players: true
+    cost: 
+        - mana 10
+    str-cost: 10 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 250
+    xp-granted:
+      - legendary 2
+magicquest_legendary_knowledgeforce:
+    spell-class: ".targeted.ForcetossSpell"
+    spell-icon: piston_base
+    can-cast-by-command: false
+    description: Magically throw an enemy into the air.
+    cooldown: 5
+    range: 15
+    damage: 5
+    horizontal-force: 30
+    vertical-force: 30
+    obey-los: true
+    target-players: true
+    check-plugins: true
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: target
+        effect: particles
+        particle-name: magicCrit
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 40
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 250
+magicquest_legendary_firewall:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    can-cast-by-command: false
+    location: random
+    entity-type: bat
+    range: 5
+    potion-effects:
+      - 14 5000 100
+      - 12 150 100
+    attributes:
+      - "generic.maxHealth 80 add"
+    effects:
+      2:
+        position: target
+        effect: sound
+        sound: mob.ghast.scream
+        volume: 0.05
+        pitch: 0.5
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 2500
+magicquest_legendary_fire:
+    spell-class: ".MultiSpell"
+    cast-item: magicquest_legendarywand
+    cooldown: 0
+    check-individual-cooldowns: false
+    spells:
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firewall
+        - magicquest_legendary_firearea
+    modifiers:
+        - wearing 388 required
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    xp-required:
+      - legendary 2500
+    xp-granted:
+      - legendary 5
+magicquest_legendary_firearea:
+    spell-class: ".targeted.AreaEffectSpell"
+    description: Strike lightning upon all nearby enemies.
+    can-cast-by-command: false
+    horizontal-radius: 8
+    vertical-radius: 5
+    point-blank: true
+    target-players: true
+    fail-if-no-targets: true
+    spells:
+        - magicquest_legendary_combust
+    cooldown: 15
+    xp-required:
+      - legendary 2500
+magicquest_legendary_combust:
+    spell-class: ".targeted.CombustSpell"
+    spell-icon: fire
+    description: Set a target on fire.
+    cooldown: 10
+    range: 20
+    obey-los: true
+    fire-ticks: 300
+    fire-tick-damage: 1
+    prevent-immunity: true
+    target-players: true
+    check-plugins: true
+    str-no-target: No target found.
+    spells:
+        - magicquest_legendary_combust
+    can-cast-by-command: false
+    xp-required:
+      - legendary 2500
+magicquest_enchanter:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    modifiers:
+        - wearing 388 required
+    effects:
+      2:
+        position: orbit
+        orbit-radius: 0.3
+        orbit-seconds-per-revolution: 3
+        orbit-tick-interval: 2
+        effect: greensparkle
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - light 2500
+    xp-granted:
+      - enchanter 1
+magicquest_enchanter_wall:
+    spell-class: ".instant.WallSpell"
+    spell-icon: brick
+    description: Creates a temporary wall to block your enemies.
+    cast-item: magicquest_enchanterwand
+    cooldown: 15
+    range: 3
+    wall-width: 5
+    wall-height: 3
+    wall-depth: 3
+    wall-type: barrier
+    wall-duration: 30
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-no-target: Your rune dues not work here.
+    xp-required:
+      - enchanter 1
+    xp-granted:
+      - enchanter 1
+magicquest_enchanter_mark:
+    spell-class: ".instant.MarkSpell"
+    spell-icon: bed
+    cast-item: magicquest_enchanterwand
+    description: Marks your location for later recall.
+    cooldown: 100
+    permanent-marks: true
+    modifiers:
+        - wearing 388 required
+    str-cast-self: You have placed a returning rune down.
+    xp-required:
+      - enchanter 250
+    xp-granted:
+      - enchanter 2
+magicquest_enchanter_portal:
+    spell-class: ".instant.PortalSpell"
+    mark-spell: "magicquest_enchanter_mark"
+    cast-item: magicquest_enchanterwand
+    duration: 500
+    teleport-cooldown: 2
+    min-distance: 10
+    max-distance: 0
+    allow-return: true
+    teleport-cost:
+        - mana 50
+    charge-cost-to-teleporter: false
+    effect-interval: 10
+    effects:
+        - special particles portal .3 .5 .8 40 .5
+        - special particles smoke .1 .1 .1 50 1
+    str-no-mark: "You have not marked a location to make a portal to."
+    str-too-close: "You are too close to your marked location."
+    str-too-far: "You are too far away from your marked location."
+    xp-required:
+      - enchanter 250
+    xp-granted:
+      - enchanter 2
+magicquest_enchanter_scrollwriting:
+    spell-class: ".instant.ConjureSpell"
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    cast-time: 80
+    cast-item: magicquest_enchanterwand
+    cooldown: 1200
+    power-affects-quantity: true
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: false
+    items:
+        - magicquest_scroll_volly 1-2 25%
+        - magicquest_scroll_waterbreathing 1 25%
+        - magicquest_scroll_thrunderstorm 1-2 25%
+        - magicquest_scroll_deathscream 1-2 25%
+    add-to-inventory: true
+    cost:
+        - paper 1
+        - mana 100
+        - health 10
+        - hunger 10
+    str-cost: free
+    str-cast-self: You have wititen a magic scroll!
+    xp-required:
+      - enchanter 2500
+    xp-granted:
+      - enchanter 5
+magicquest_nfire:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - fire 0
+    xp-granted:
+      - fire -10
+magicquest_nfrost:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - frost 0
+    xp-granted:
+      - frost -10
+magicquest_narcane:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - arcane 0
+    xp-granted:
+      - arcane -10
+magicquest_nlight:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - light 0
+    xp-granted:
+      - light -10
+magicquest_nlegendary:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - legendary 0
+    xp-granted:
+      - legendary -10
+magicquest_nnecro:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - necromancy 0
+    xp-granted:
+      - necromancy -10
+magicquest_nenchanter:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - enchanter 0
+    xp-granted:
+      - enchanter -10
+magicquest_nwizardery:
+    spell-class: ".buff.DummySpell"
+    xp-required:
+      - wizardery 0
+    xp-granted:
+      - wizardery -10
+magicquest_lab:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    tick-interval: 1
+    particle-name: witchMagic
+    particle-horizontal-spread: 0.01
+    particle-vertical-spread: 0.01
+    particle-speed: 0.05
+    max-distance: 20
+    max-duration: 40
+    hit-radius: 2
+    hit-players: true
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    spell: magicquest_Nausea
+    cost: 
+        - mana 20
+    str-cost: 20 mana
+    modifiers:
+        - wearing 388 required
+    xp-required:
+      - legendary 1
+    xp-granted:
+      - legendary 1
+firechain:
+    spell-class: ".targeted.ChainSpell"
+    spell: pain
+    bounces: 30
+    bounce-range: 30
+    interval: 10
+    beneficial: false
+    target-players: false
+    target-non-players: true
+    effects:
+        - line particleline 0.25 flame 0.2 0.2 0.1 10 0.5
+skywars_start:
+    spell-class: ".targeted.ChainSpell"
+    spell: skywars_starting
+    cast-item: skywars_wand
+    bounces: 8
+    bounce-range: 30
+    interval: 10
+    beneficial: true
+    target-players: true
+    target-non-players: true
+    spell: skywars_starting
+    effects:
+      2:
+        position: line
+        effect: particles
+        particle-name: witchMagic
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 40
+skywars_starting:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    require-player-target: false
+    execute-as-target-instead: false
+    range: 20
+    command-to-execute:
+        - "cast forcecast %a skywarsspawntp"
+skywars_lootpot:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_lootpot
+    spell-icon: redstone
+    description: get basic armor fro skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: false
+    items:
+        - skywars_Lootpot 1 100%
+    add-to-inventory: true
+    str-cost: free
+skywarsspawntp:
+    spell-class: ".MultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: false
+    spells:
+        - skywarsspawnislands
+        - Nausea
+        - slowness
+        - blindness
+        - skywars_lootpot
+slowness:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: slowness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 2
+    strength: 200
+    duration: 100
+    targeted: false
+    target-players: false
+    target-non-players: false
+    obey-los: false
+blindness:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blindness
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 15
+    strength: 200
+    duration: 100
+    targeted: false
+    target-players: false
+    target-non-players: false
+    obey-los: false
+Nausea:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: Nausea
+    spell-icon: spider_eye
+    description: Poison your target.
+    type: 9
+    strength: 200
+    duration: 100
+    targeted: false
+    target-players: false
+    target-non-players: false
+    obey-los: false
+skywarsspawnislands:
+    spell-class: ".MultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: true
+    spells:
+        - skywars_spawn1
+        - skywars_spawn2
+        - skywars_spawn3
+        - skywars_spawn4
+        - skywars_spawn5
+        - skywars_spawn6
+        - skywars_spawn7
+        - skywars_spawn8
+    cast-random-spell-instead: true
+skywars_spawn1:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: 0,71,-47
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn2:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: 41,71,-41
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn3:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: 47,71,0
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn4:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: 41,71,41
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn5:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: 0,71,47
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn6:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: -41,71,41
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn7:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: -47,71,0
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+skywars_spawn8:
+    spell-class: ".instant.GateSpell"
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: -41,71,-41
+    effects:
+        - pos1 ender
+        - pos2 ender
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+angry:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    check-individual-cooldowns: false
+    spells:
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+        - lightning
+        - DELAY 10
+portal:
+    spell-class: ".instant.PortalSpell"
+    name: portal
+    cast-item: stick
+    mark-spell: "mark"
+    duration: 10000000
+    teleport-cooldown: 5
+    min-distance: 10
+    max-distance: 0
+    allow-return: true
+    teleport-cost:
+        - mana 10
+    charge-cost-to-teleporter: false
+    effect-interval: 1
+    effects:
+        - special particles portal .3 .5 .8 40 .5 
+    str-no-mark: "You have not marked a location to make a portal to."
+    str-too-close: "You are too close to your marked location."
+    str-too-far: "You are too far away from your marked location."
+dummy3:
+    spell-class: ".targeted.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: hearts
+      2:
+        position: target
+        effect: particles
+        particle-name: hearts
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+    spells: wedding
+wedding:
+    spell-class: ".buff.ArmorSpell"
+    name: wedding
+    duration: 0
+    num-uses: 15
+    chestplate: weeding_ring
+    str-cast-self: You have Merryed Ghureg!
+    str-has-armor: You cannot cast this spell if you are already wearing your wedding ring.
+    effects:
+      1:
+        position: caster
+        effect: hearts
+      2:
+        position: target
+        effect: particles
+        particle-name: hearts
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+skywars_Mapfourworlds:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    cast-item: skywars_wand
+    check-individual-cooldowns: false
+    spells:
+        - Mapspawn2
+        - DELAY 50
+        - Mapspawnpaste
+Mapspawn2:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    command-to-execute:
+        - "/schem load skywarsmap_fourquadrants"
+    temporary-op: true
+skywars_Mapoutline:
+    spell-class: ".MultiSpell"
+    cooldown: 0
+    cast-item: skywars_wand
+    check-individual-cooldowns: false
+    spells:
+        - Mapspawn1
+        - DELAY 50
+        - Mapspawnpaste
+Mapspawn1:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    command-to-execute:
+        - "/schem load skywarsmap_outline"
+    temporary-op: true
+Mapspawnpaste:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    command-to-execute:
+        - "/paste"
+    temporary-op: true
+Weetigo:
+    spell-class: ".ArrowSpell"
+    bow-name: "&3Weetigo"
+    always-granted: true
+    spell-on-hit-entity: "entomb"
+    spell-on-hit-ground: "lightning"
+    modifire:
+        - world lobby required
+skywars_basicgive:
+    spell-class: ".MultiSpell"
+    consume-cast-item: skywars_Lootpot
+    cooldown: 0
+    check-individual-cooldowns: false
+    spells:
+        - skywars_basicarmor
+        - skywars_basicwepond
+        - skywars_basicblock
+        - skywars_basicmisc
+        - skywars_tools
+skywars_tools:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_tools
+    spell-icon: redstone
+    description: get basic armor fro skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: false
+    items:
+        - skywars_pick 1 100%
+    str-cost: free
+skywars_basicwepond:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_basicwepond
+    spell-icon: redstone
+    description: get basic armor fro skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: false
+    items:
+        - skywars_basicisword 1 25%
+        - skywars_basicdsword 1 25%
+        - skywars_basicssword 1 25%
+        - skywars_basicbow 1 25%
+    add-to-inventory: true
+    str-cost: free
+    str-cast-self: You have recived your sword...or your bow... im not really sure what we put in the kit for you...errr have fun?
+skywars_basicarrow:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_basicarrow
+    cast-item: skywars_basicbow
+    always-granted: true
+    spell-icon: skywars_basicbow
+    cast-time: 80
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - skywars_basicarrow 1-5 100%
+    add-to-inventory: true
+    str-cost: free
+skywars_basicarmor:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_basicarmor
+    spell-icon: 299
+    description: get basic armor for skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: true
+    items:
+        - skywars_basicdchest 1 25%
+        - skywars_basicIchest 1 25%
+        - skywars_basiclchest 1 25%
+        - skywars_basicgchest 1 25%
+    add-to-inventory: true
+    str-cost: free
+    str-cast-self: You have recived your sword...or your bow... im not really sure what we put in the kit for you...errr have fun?
+skywars_basicblock:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_basicblock
+    spell-icon: 299
+    description: get basic armor for skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: true
+    items:
+        - skywars_basictnt 10-16 10%
+        - skywars_basicstone 16-64 30%
+        - skywars_basiclog 16-64 30%
+        - skywars_basicglass 16-64 30%
+    add-to-inventory: true
+    str-cost: free
+    str-cast-self: You have recived your sword...or your bow... im not really sure what we put in the kit for you...errr have fun?
+skywars_basicmisc:
+    spell-class: ".instant.ConjureSpell"
+    name: skywars_basicmisc
+    spell-icon: redstone
+    description: get basic armor fro skywars
+    add-to-inventory: true
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: false
+    auto-equip: false
+    items:
+        - skywars_basicgpot 1 25%
+        - skywars_basicbpot 1 25%
+        - flint_and_steel 1 25%
+        - fishing_rod 1 25%
+    add-to-inventory: true
+    str-cost: free
+spermtest:
+    spell-class: ".instant.ThrowBlockSpell"
+    name: spermtest
+    spell-icon: anvil
+    description: Throws some sperm.
+    block-type: wool
+    velocity: 1.0
+    vertical-adjustment: 0.5
+    rotation-offset: 180
+    fall-damage: 2.0
+    fall-damage-max: 20
+    drop-item: false
+    remove-blocks: true
+    call-target-event: true
+    check-plugins: false
+    spell-on-land: entomb
+spawn:
+  spell-class: ".instant.FlightPathSpell"
+  always-granted: true
+  incantations: "Spawn"
+  x: -130
+  y: 63
+  z: 97
+  cruising-altitude: 360
+  speed: 1.5
+flightpath1:
+  spell-class: ".instant.FlightPathSpell"
+  x: -118
+  y: 65
+  z: 46
+  cruising-altitude: 360
+  speed: 1.5
+flightpath2:
+  spell-class: ".instant.FlightPathSpell"
+  x: -110
+  y: 65
+  z: 44
+  cruising-altitude: 360
+  speed: 1.5
+flightpath3:
+  spell-class: ".instant.FlightPathSpell"
+  x: -102
+  y: 65
+  z: 41
+  cruising-altitude: 360
+  speed: 1.5
+flightpath4:
+  spell-class: ".instant.FlightPathSpell"
+  x: -140
+  y: 66
+  z: -51
+  cruising-altitude: 360
+  speed: 1.5
+flightpath5:
+  spell-class: ".instant.FlightPathSpell"
+  x: -94
+  y: 68
+  z: 37
+  cruising-altitude: 360
+  speed: 1.5
+flightpath6:
+  spell-class: ".instant.FlightPathSpell"
+  x: -86
+  y: 68
+  z: 30
+  cruising-altitude: 360
+  speed: 1.5
+flightpath7:
+  spell-class: ".instant.FlightPathSpell"
+  x: -155
+  y: 69
+  z: -41
+  cruising-altitude: 360
+  speed: 1.5
+flightpath8:
+  spell-class: ".instant.FlightPathSpell"
+  x: -80
+  y: 68
+  z: 22
+  cruising-altitude: 360
+  speed: 1.5
+flightpath9:
+  spell-class: ".instant.FlightPathSpell"
+  x: -165
+  y: 70
+  z: 23
+  cruising-altitude: 360
+  speed: 1.5
+flightpath10:
+  spell-class: ".instant.FlightPathSpell"
+  x: -100
+  y: 69
+  z: -48
+  cruising-altitude: 360
+  speed: 1.5
+flightpath11:
+  spell-class: ".instant.FlightPathSpell"
+  x: -76
+  y: 68
+  z: 14
+  cruising-altitude: 360
+  speed: 1.5
+flightpath12:
+  spell-class: ".instant.FlightPathSpell"
+  x: -173
+  y: 73
+  z: -9
+  cruising-altitude: 360
+  speed: 1.5
+flightpath13:
+  spell-class: ".instant.FlightPathSpell"
+  x: -172
+  y: 72
+  z: 6
+  cruising-altitude: 360
+  speed: 1.5
+flightpath14:
+  spell-class: ".instant.FlightPathSpell"
+  x: -84
+  y: 70
+  z: -35
+  cruising-altitude: 360
+  speed: 1.5
+flightpath15:
+  spell-class: ".instant.FlightPathSpell"
+  x: -74
+  y: 67
+  z: 6
+  cruising-altitude: 360
+  speed: 1.5
+flightpath16:
+  spell-class: ".instant.FlightPathSpell"
+  x: -75
+  y: 66
+  z: -19
+  cruising-altitude: 360
+  speed: 1.5
+flightpath17:
+  spell-class: ".instant.FlightPathSpell"
+  x: -163
+  y: 70
+  z: -34
+  cruising-altitude: 360
+  speed: 1.5
+flightpath18:
+  spell-class: ".instant.FlightPathSpell"
+  x: -108
+  y: 70
+  z: -52
+  cruising-altitude: 360
+  speed: 1.5
+flightpath19:
+  spell-class: ".instant.FlightPathSpell"
+  x: -170
+  y: 72
+  z: 15
+  cruising-altitude: 360
+  speed: 1.5
+flightpath20:
+  spell-class: ".instant.FlightPathSpell"
+  x: -73
+  y: 66
+  z: -3
+  cruising-altitude: 360
+  speed: 1.5
+flightpath21:
+  spell-class: ".instant.FlightPathSpell"
+  x: -158
+  y: 65
+  z: 32
+  cruising-altitude: 360
+  speed: 1.5
+flightpath22:
+  spell-class: ".instant.FlightPathSpell"
+  x: -171
+  y: 72
+  z: -18
+  cruising-altitude: 360
+  speed: 1.5
+flightpath23:
+  spell-class: ".instant.FlightPathSpell"
+  x: -150
+  y: 65
+  z: 38
+  cruising-altitude: 360
+  speed: 1.5
+flightpath24:
+  spell-class: ".instant.FlightPathSpell"
+  x: -168
+  y: 71
+  z: -26
+  cruising-altitude: 360
+  speed: 1.5
+flightpath25:
+  spell-class: ".instant.FlightPathSpell"
+  x: -73
+  y: 66
+  z: -11
+  cruising-altitude: 360
+  speed: 1.5
+flightpath26:
+  spell-class: ".instant.FlightPathSpell"
+  x: -173
+  y: 72
+  z: -1
+  cruising-altitude: 360
+  speed: 1.5
+flightpath27:
+  spell-class: ".instant.FlightPathSpell"
+  x: -116
+  y: 69
+  z: -54
+  cruising-altitude: 360
+  speed: 1.5
+flightpath28:
+  spell-class: ".instant.FlightPathSpell"
+  x: -124
+  y: 68
+  z: -54
+  cruising-altitude: 360
+  speed: 1.5
+flightpath29:
+  spell-class: ".instant.FlightPathSpell"
+  x: -142
+  y: 65
+  z: 42
+  cruising-altitude: 360
+  speed: 1.5
+flightpath30:
+  spell-class: ".instant.FlightPathSpell"
+  x: -79
+  y: 68
+  z: -27
+  cruising-altitude: 360
+  speed: 1.5
+flightpath31:
+  spell-class: ".instant.FlightPathSpell"
+  x: -134
+  y: 66
+  z: 45
+  cruising-altitude: 360
+  speed: 1.5
+flightpath32:
+  spell-class: ".instant.FlightPathSpell"
+  x: -92
+  y: 69
+  z: -43
+  cruising-altitude: 360
+  speed: 1.5
+flightpath33:
+  spell-class: ".instant.FlightPathSpell"
+  x: -132
+  y: 67
+  z: -53
+  cruising-altitude: 360
+  speed: 1.5
+flightpath34:
+  spell-class: ".instant.FlightPathSpell"
+  x: -148
+  y: 67
+  z: -47
+  cruising-altitude: 360
+  speed: 1.5
+flightpath35:
+  spell-class: ".instant.FlightPathSpell"
+  x: -126
+  y: 66
+  z: 46
+  cruising-altitude: 360
+  speed: 1.5
+beam:
+    spell-class: ".instant.BeamSpell"
+    beam-width: 2
+    y-offset: 0
+    max-distance: 50
+    interval: 0.25
+    spell: pain
+    effects:
+        - special particles reddust
+bomb:
+    spell-class: ".targeted.BombSpell"
+    bomb: cake
+    fuse: 100
+    interval: 20
+    spell: explode
+mount:
+    spell-class: ".targeted.MountSpell"
+    reverse: false
+homingarrow:
+    spell-class: ".targeted.HomingArrowSpell"
+    velocity: 1
+    special-effect-interval: 0
+rob:
+    spell-class: ".targeted.SpawnMonsterSpell"
+    name: rob
+    cast-item: 405
+    location: target
+    entity-type: zombie
+    range: 10
+    holding: "339"
+    remove-ai: true
+    potion-effects:
+      - 14 5000 0
+anvil:
+    spell-class: ".instant.ThrowBlockSpell"
+    name: anvil
+    spell-icon: anvil
+    description: Throws an anvil.
+    cast-item: blaze_rod
+    cooldown: 10
+    block-type: anvil
+    velocity: 1.0
+    vertical-adjustment: 0.5
+    rotation-offset: 0
+    fall-damage: 2.0
+    fall-damage-max: 20
+    drop-item: false
+    remove-blocks: false
+    call-target-event: true
+    check-plugins: false
+    cost:
+        - mana 25
+        - anvil
+    str-cost: 25 mana and 1 anvil
+armor:
+    spell-class: ".buff.ArmorSpell"
+    name: armor
+    spell-icon: iron_chestplate
+    cast-item: book
+    duration: 30
+    num-uses: 15
+    helmet: gold_helmet protection_explosions:1 oxygen:1
+    chestplate: gold_chestplate protection_projectile:1
+    leggings: gold_leggings protection_fire:1
+    boots: gold_boots protection_fall:1
+    cost:
+        - mana 25
+        - gold_nugget 1
+    str-cost: 25 mana and 1 golden nugget
+    str-cast-self: You have conjured some magic armor!
+    str-has-armor: You cannot cast this spell if you are already wearing armor.
+blind:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: blind
+    spell-icon: ink_sack:0
+    description: Blind your target.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    type: 15
+    strength: 0
+    duration: 100
+    targeted: true
+    can-target: players
+    obey-los: true
+    str-cast-self: You have blinded %t!
+    str-no-target: No target found.
+blink:
+    spell-class: ".targeted.BlinkSpell"
+    name: blink
+    spell-icon: ender_pearl
+    description: Teleport a short distance.
+    cast-item: stick
+    cooldown: 8
+    range: 25
+    pass-through-ceiling: false
+    smoke-trail: true
+    effects:
+        - pos1 ender
+        - pos2 ender
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You blink away!
+    str-cast-others: "%a blinks away!"
+    str-cant-blink: You cannot blink there.
+build:
+    spell-class: ".targeted.BuildSpell"
+    name: build
+    spell-icon: stone
+    description: Build blocks from far away.
+    cast-item: stick
+    cooldown: 2
+    range: 25
+    slot: 0
+    consume-block: true
+    effects:
+        - target blockbreak
+    check-plugins: true
+    allowed-types: 1,2,3,4,5,12,13,17,20,22,24,35,41,42,43,44,45,47,48,49,50,53,57,65,67,80,85,87,88,89,91,92
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-invalid-block: You can't build that block.
+    str-cant-build: You can't build there.
+carpet:
+    spell-class: ".buff.CarpetSpell"
+    name: carpet
+    spell-icon: thin_glass
+    description: Lets you walk on a platform of glass.
+    cast-item: book
+    cooldown: 30
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    size: 2
+    cost:
+        - mana 50
+        - feather 5
+    use-cost:
+        - mana 20
+        - feather 1
+    use-cost-interval: 50
+    str-cost: 50 mana, 5 feathers, plus 20 mana and 1 feather every 50 blocks
+    str-cast-self: You are now walking on a platform of glass!
+    str-cast-others: "%a is now walking on a platform of glass!"
+    str-fade: Your magical glass platform disappears.
+clarity:
+    spell-class: ".buff.ManaRegenSpell"
+    name: clarity
+    spell-icon: potion
+    description: Increase mana regeneration for a time.
+    cast-item: book
+    cooldown: 300
+    duration: 60
+    regen-mod-amt: 3
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: Your thoughts race and flow with ease!
+    str-fade: Your mind returns to normal.
+cleanse:
+    spell-class: ".targeted.CleanseSpell"
+    name: cleanse
+    spell-icon: nether_star
+    description: Remove negative affects from yourself.
+    cast-item: book
+    cooldown: 60
+    remove:
+      - fire
+      - 17
+      - 19
+      - 20
+    target-self: true
+    beneficial: true
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You cleanse yourself of negative effects.
+combust:
+    spell-class: ".targeted.CombustSpell"
+    name: combust
+    spell-icon: fire
+    description: Set a target on fire.
+    cast-item: blaze_rod
+    cooldown: 10
+    range: 20
+    obey-los: true
+    fire-ticks: 100
+    fire-tick-damage: 1
+    prevent-immunity: true
+    can-target: monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+confusion:
+    spell-class: ".instant.ConfusionSpell"
+    name: confusion
+    spell-icon: eye_of_ender
+    description: Cause nearby monsters to attack each other.
+    cast-item: bone
+    cooldown: 30
+    range: 20
+    can-target: zombie,skeleton,creeper
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You cause nearby monsters to become confused and attack each other.
+    str-cast-others: "%a causes nearby monsters to attack each other."
+conjure:
+    spell-class: ".instant.ConjureSpell"
+    name: conjure
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - redstone 1-2 25%
+        - speckled_melon 1 25%
+        - magma_cream 1-2 25%
+        - spider_eye 1-2 25%
+    add-to-inventory: false
+    str-cost: free
+    str-cast-self: You have conjured some potion reagents!
+cripple:
+    spell-class: ".targeted.CrippleSpell"
+    name: cripple
+    spell-icon: web
+    description: Slow down a targeted enemy.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    effect-strength: 10
+    effect-duration: 100
+    can-target: players,monsters
+    str-cast-self: You have crippled %t.
+    str-no-target: No target found.
+disarm:
+    spell-class: ".targeted.DisarmSpell"
+    name: disarm
+    spell-icon: stone_sword:130
+    description: Disarm your opponent.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    disarmable-items:
+        - blaze_rod
+        - stick
+        - book
+        - bone
+        - wood_sword
+        - stone_sword
+        - iron_sword
+        - diamond_sword
+        - bow
+    can-target: players,zombies,skeletons
+    disarm-duration: 100
+    dont-drop: true
+    prevent-theft: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-no-target: No target found.
+    str-invalid-item: Your target could not be disarmed.
+    str-cast-self: You have disarmed %t.
+    str-cast-target: "%a has disarmed you."
+dowse:
+    spell-class: ".instant.DowseSpell"
+    name: dowse
+    spell-icon: compass
+    description: Dowse for iron ore.
+    cast-item: book
+    cooldown: 60
+    block-type: iron_ore
+    entity-type: ""
+    radius: 4
+    rotate-player: true
+    set-compass: true
+    cost:
+        - mana 35
+        - stone 2
+    str-cost: 35 mana and 2 stone blocks
+    str-cast-self: There is iron ore nearby.
+    str-not-found: No iron ore found nearby.
+drainlife:
+    spell-class: ".targeted.DrainlifeSpell"
+    name: drainlife
+    spell-icon: ghast_tear
+    description: Drain life from your enemy and give it to you.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 15
+    take-type: health
+    take-amt: 2
+    give-type: health
+    give-amt: 2
+    animation-speed: 2
+    ignore-armor: false
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You drain life from your enemy.
+    str-no-target: No target found.
+empower:
+    spell-class: ".buff.EmpowerSpell"
+    name: empower
+    spell-icon: glowstone_dust
+    description: Makes your spells more powerful.
+    cast-item: book
+    power-multiplier: 1.5
+    cooldown: 120
+    duration: 30
+    num-uses: 10
+    cost:
+        - mana 15
+    use-cost:
+        - mana 5
+    use-cost-interval: 1
+    str-cost: 15 mana, plus 5 mana for each spell cast
+    str-cast-self: You begin to glow with magical energy.
+    str-cast-others: "%a begins to glow with magical energy."
+    str-fade: You are no longer glowing with magical energy.        
+enderchest:
+    spell-class: ".instant.EnderchestSpell"
+    name: enderchest
+    spell-icon: ender_chest
+    description: Opens your ender chest inventory.
+    cast-item: book
+    cooldown: 300
+    cost:
+        - mana 50
+        - ender_pearl 1
+    str-cost: 50 mana and 1 ender pearl
+entomb:
+    spell-class: ".targeted.EntombSpell"
+    name: entomb
+    spell-icon: glass
+    description: Encase an enemy in glass.
+    cast-item: 405
+    cooldown: 5
+    range: 15
+    can-target: players,monsters
+    tomb-block-type: 79
+    tomb-duration: 100
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-no-target: No target found.
+explode:
+    spell-class: ".targeted.ExplodeSpell"
+    name: explode
+    spell-icon: tnt
+    description: Create an explosion.
+    cast-item: blaze_rod
+    cooldown: 30
+    range: 25
+    explosion-size: 5
+    backfire-chance: 3
+    prevent-block-damage: false
+    prevent-player-damage: false
+    damage-multiplier: 10
+    add-fire: true
+    simulate-tnt: true
+    ignore-canceled: false
+    cost:
+        - mana 40
+        - sulphur 1
+    str-cost: 40 mana and 1 gunpowder
+    str-no-target: You cannot create an explosion there.
+    str-cast-self: Boom!
+    str-cast-others: Boom!
+explosivearrow:
+    spell-class: ".instant.ProjectileSpell"
+    name: explosivearrow
+    spell-icon: arrow
+    description: Cause an explosion where an arrow lands
+    cast-item: blaze_rod
+    cooldown: 30
+    projectile: arrow
+    velocity: 0
+    require-hit-entity: false
+    cancel-damage: true
+    remove-projectile: true
+    max-distance: 25
+    spells: [explode]
+    cost:
+        - mana 25
+        - sulphur 1
+        - arrow 1
+    str-cost: 25 mana, 1 gunpowder, and 1 arrow
+    str-cast-self: You fire an explosive arrow.
+farm:
+    spell-class: ".targeted.FarmSpell"
+    name: farm
+    spell-icon: seeds
+    cast-item: book
+    description: Make crops grow nearby.
+    cooldown: 10
+    radius: 3
+    growth: 1
+    targeted: false
+    cost:
+        - mana 75
+        - seeds 2
+    str-cost: 75 mana and 2 seeds
+    str-cast-self: The crops around you grow quickly.
+    str-no-target: There are no crops nearby.
+fireball:
+    spell-class: ".targeted.FireballSpell"
+    name: fireball
+    spell-icon: fireball
+    description: Throw a fiery ball of destruction.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 30
+    require-entity-target: false
+    can-target: players,monsters
+    check-plugins: true
+    damage-multiplier: 3
+    small-fireball: true
+    no-fire: false
+    no-explosion: false
+    no-explosion-effect: true
+    no-explosion-damage: 5
+    no-explosion-damage-range: 3
+    cost: 
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: You cannot throw a fireball there.
+    str-cast-self: You throw a fiery ball of destruction!
+    str-cast-others: "%a throws a fiery ball of destruction!"
+firenova:
+    spell-class: ".instant.FirenovaSpell"
+    name: firenova
+    spell-icon: blaze_powder
+    description: Summon an expanding ring of fire.
+    cast-item: bone
+    cooldown: 10
+    range: 5
+    tick-speed: 10
+    burn-tall-grass: true
+    check-plugins: true
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You summon an expanding ring of fire.
+    str-cast-others: "%a summons an expanding ring of fire."
+flamewalk:
+    spell-class: ".buff.FlamewalkSpell"
+    name: flamewalk
+    spell-icon: fire
+    description: Burn your enemies around you as you walk.
+    cast-item: book
+    cooldown: 30
+    range: 8
+    fire-ticks: 100
+    tick-interval: 100
+    target-players: false
+    duration: 120
+    cost:
+        - mana 25
+        - 263 2
+    use-cost:
+        - mana 10
+    use-cost-interval: 10
+    str-cost: 25 mana, 2 coal, plus 10 mana occasionally
+    str-cast-self: You begin to burn your enemies around you.
+    str-fade: You are no longer burning your enemies.
+food:
+    spell-class: ".instant.FoodSpell"
+    name: food
+    spell-icon: cooked_beef
+    description: Makes you less hungry.
+    cast-item: book
+    cooldown: 30
+    food: 4
+    saturation: 2.5
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: You feel less hungry.
+forcebomb:
+    spell-class: ".targeted.ForcebombSpell"
+    name: forcebomb
+    spell-icon: record_4
+    description: Push back your enemies.
+    cast-item: blaze_rod
+    cooldown: 8
+    range: 15
+    radius: 3
+    pushback-force: 30
+    additional-vertical-force: 15
+    max-vertical-force: 20
+    can-target: players,monsters
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: An explosion of energy pushes your enemies around.
+    str-no-target: No target found.
+forcepush:
+    spell-class: ".instant.ForcepushSpell"
+    name: forcepush
+    spell-icon: record_3
+    description: Push back your enemies.
+    cast-item: bone
+    cooldown: 8
+    range: 10
+    pushback-force: 30
+    additional-vertical-force: 15
+    max-vertical-force: 20
+    can-target: players,monsters
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You push back your enemies!
+    str-cast-others: "%a pushes back his enemies."
+forcetoss:
+    spell-class: ".targeted.ForcetossSpell"
+    name: forcetoss
+    spell-icon: piston_base
+    description: Magically throw an enemy into the air.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 15
+    damage: 0
+    horizontal-force: 30
+    vertical-force: 15
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    str-cast-self: You push back your enemy!
+    str-cast-others: "%a pushes back his enemy."
+freeze:
+    spell-class: ".instant.FreezeSpell"
+    name: freeze
+    spell-icon: snow_ball
+    description: Spray your enemies with cold snowballs.
+    cast-item: blaze_rod
+    snowballs: 25
+    horizontal-spread: 15
+    vertical-spread: 5
+    damage: 3
+    slow-amount: 3
+    slow-duration: 80
+    can-target: players,monsters
+    cooldown: 5
+    cost:
+        - mana 10
+        - snow_ball 1
+    str-cost: 10 mana and 1 snowball
+frostwalk:
+    spell-class: ".buff.FrostwalkSpell"
+    name: frostwalk
+    spell-icon: ice
+    description: Lets you walk on water.
+    cast-item: book
+    size: 2
+    leave-frozen: false
+    cooldown: 30
+    cost:
+        - mana 50
+    use-cost:
+        - snow_ball 1
+    use-cost-interval: 25
+    str-cost: 50 mana, plus 1 snowball every 25 blocks
+    str-cast-self: You can now walk on water!
+    str-cast-others: "%a can now walk on water!"
+    str-fade: You can no longer walk on water.
+gate:
+    spell-class: ".instant.GateSpell"
+    name: gate
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: SPAWN
+    effects:
+        - pos1 ender
+        - pos2 ender
+    cost:
+        - mana 50
+        - iron_ingot 1
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.
+geyser:
+    spell-class: ".targeted.GeyserSpell"
+    name: geyser
+    spell-icon: water
+    description: Create a geyser of water at your enemy's feet.
+    cast-item: blaze_rod
+    range: 20
+    damage: 0
+    velocity: 10
+    animation-speed: 2
+    geyser-height: 4
+    geyser-type: water
+    ignore-armor: false
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You create a geyser at your enemy's feet.
+    str-no-target: No target found.
+gills:
+    spell-class: ".buff.GillsSpell"
+    name: gills
+    spell-icon: gold_helmet
+    description: Allows you to breath underwater.
+    cast-item: book
+    glass-head-effect: true
+    cooldown: 60
+    duration: 300
+    num-uses: 5
+    cost:
+        - mana 50
+        - sugar_cane 1
+    use-cost:
+        - sugar_cane 1
+    use-cost-interval: 1
+    str-cost: 50 mana and 1 sugar cane, plus 1 sugar cane few seconds
+    str-cast-self: You form gills on your neck!
+    str-fade: Your gills disappear.
+haste:
+    spell-class: ".buff.HasteSpell"
+    name: haste
+    spell-icon: gold_boots
+    description: Sprint faster for a time.
+    cast-item: book
+    effect-strength: 3
+    boost-duration: 300
+    duration: 60
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: You gain unnatural speed!
+    str-cast-others: "%a gains unnatural speed!"
+    str-fade: You lose your unnatural speed.
+haze:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: haze
+    spell-icon: slime_ball
+    description: Makes your target's vision hazey.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    type: 9
+    strength: 0
+    duration: 200
+    targeted: true
+    can-target: players
+    obey-los: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have confuzzled your target!
+    str-no-target: No target found.
+heal:
+    spell-class: ".targeted.HealSpell"
+    name: heal
+    spell-icon: red_rose
+    description: Heals a target player.
+    cast-item: stick
+    heal-amount: 10
+    cancel-if-full: true
+    effects:
+        - target potion FF0000 40
+    can-target: players,wolf,cat
+    obey-los: true
+    cooldown: 0
+    range: 12
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have healed %t.
+    str-cast-target: "%a has healed you."
+    str-no-target: No target to heal.
+    str-max-health: "%t is already at max health."
+invisibility:
+    spell-class: ".buff.InvisibilitySpell"
+    name: invisibility
+    spell-icon: record_11
+    description: Makes you invisible to players and monsters.
+    cast-item: bone
+    cooldown: 60
+    effects:
+        - caster spawn
+        - disabled spawn
+    toggle: true
+    prevent-pickups: true
+    cancel-on-give-damage: true
+    cancel-on-logout: true
+    duration: 15
+    cost:
+        - mana 25
+    use-cost:
+        - mana 15
+    use-cost-interval: 3
+    str-cost: 25 mana, plus 15 mana every 3 seconds
+    str-cast-self: You vanish!
+    str-cast-others: "%a vanishes!"
+    str-fade: You are visible again.
+invulnerability:
+    spell-class: ".buff.InvulnerabilitySpell"
+    name: invulnerability
+    spell-icon: gold_chestplate
+    description: Makes you invulnerable to damage.
+    cast-item: book
+    damage-causes:
+        - block explosion
+        - contact
+        - custom
+        - drowning
+        - entity attack
+        - entity explosion
+        - fall
+        - fire
+        - fire tick
+        - lava
+        - lightning
+        - magic
+        - poison
+        - projectile
+        - starvation
+        - suffocation
+        - void
+        - wither
+    duration: 60
+    cooldown: 300
+    cost: 
+        - mana 30
+    use-cost: 
+        - mana 15
+    use-cost-interval: 5
+    str-cost: 30 mana, plus 15 mana when taking damage
+    str-cast-self: You feel your skin harden.
+    str-cast-others: "%a's skin hardens."
+    str-fade: You feel your skin return to normal.
+leap:
+    spell-class: ".instant.LeapSpell"
+    name: leap
+    spell-icon: diamond_boots
+    description: Leap forward.
+    cast-item: stick
+    forward-velocity: 40
+    upward-velocity: 15
+    cancel-damage: true
+    cooldown: 10
+    cost:
+        - mana 15
+    str-cost: mana 15
+    str-cast-self: You leap forward.
+    str-cast-others: "%a leaps forward."
+levitate:
+    spell-class: ".targeted.LevitateSpell"
+    name: levitate
+    spell-icon: feather
+    description: Cause your target to fly through the air.
+    cast-item: bone
+    tick-rate: 5
+    duration: 15
+    cooldown: 30
+    range: 12
+    cancel-on-item-switch: true
+    cancel-on-spell-cast: true
+    can-target: players,monsters,animals
+    cost:
+        - mana 30
+        - feather 2
+    str-cost: 30 mana and 2 feathers
+    str-cast-self: You are levitating %t!
+    str-cast-target: "%a is levitating you!"
+    str-no-target: No target found.
+lifewalk:
+    spell-class: ".buff.LifewalkSpell"
+    name: lifewalk
+    spell-icon: sapling:2
+    description: Flowers grow in your footsteps!
+    cast-item: book
+    tick-interval: 15
+    red-flower-chance: 15
+    yellow-flower-chance: 15
+    sapling-chance: 5
+    tallgrass-chance: 25
+    fern-chance: 15
+    cost:
+        - mana 25
+        - red_rose 1
+        - yellow_flower 1
+    use-cost:
+        - yellow_flower 1
+    use-cost-interval: 25
+    str-cost: 25 mana, 1 rose, 1 yellow flower, plus 1 flower every so often
+    str-cast-self: Flowers grow in your footsteps!
+    str-cast-others: Flowers grow in %a's footsteps!
+    str-fade: Flowers no longer grow in your footsteps.
+lightning:
+    spell-class: ".targeted.LightningSpell"
+    name: lightning
+    spell-icon: gold_sword
+    description: Call down lightning.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    additional-damage: 0
+    no-damage: false
+    require-entity-target: false
+    check-plugins: true
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You call down lightning.
+    str-cast-others: "%a calls down lightning."
+    str-no-target: No target found.
+lightwalk:
+    spell-class: ".buff.LightwalkSpell"
+    name: lightwalk
+    spell-icon: glowstone
+    description: Light your path.
+    cast-item: 317
+    cost:
+        - mana 25
+        - torch 3
+    use-cost:
+        - torch 1
+    use-cost-interval: 25
+    str-cost: 25 mana and 3 torches, plus 1 torch occasionally
+    str-cast-self: Light appears at your feet.
+    str-fade: The light at your feet goes out.
+lilywalk:
+    spell-class: ".buff.LilywalkSpell"
+    name: lilywalk
+    spell-icon: water_lily
+    description: Lets you walk on water on lily pads.
+    cast-item: book
+    cooldown: 30
+    cost:
+        - mana 40
+        - water_lily 1
+    use-cost:
+        - water_lily 1
+    use-cost-interval: 25
+    str-cost: 40 mana and 1 lilypad, plus 1 lilypad every 50 blocks
+    str-cast-self: You can now walk on water!
+    str-cast-others: "%a can now walk on water!"
+    str-fade: You can no longer walk on water.
+mana:
+    spell-class: ".instant.ManaSpell"
+    name: lifetap
+    spell-icon: potion:8193
+    description: Restores mana at the cost of life.
+    cast-item: bone
+    cooldown: 3
+    mana: 25
+    cost:
+        - health 4
+    str-cost: 2 hearts
+    str-cast-self: You restore 25 mana.
+mark:
+    spell-class: ".instant.MarkSpell"
+    name: mark
+    spell-icon: bed
+    description: Marks your location for later recall.
+    cast-item: stick
+    permanent-marks: true
+    str-cast-self: You have marked your location.
+minion:
+    spell-class: ".buff.MinionSpell"
+    name: minion
+    spell-icon: monster_egg:54
+    description: Summons an undead minion to aid you.
+    cast-item: bone
+    cooldown: 60
+    duration: 60
+    mob-chances:
+        - Zombie 75
+        - Skeleton 25
+    prevent-sun-burn: true
+    target-players: false
+    cost:
+        - mana 30
+        - bone 2
+    str-cost: 30 mana and 2 bones
+    str-cast-self: You summon an undead minion.
+    str-cast-others: "%a has summoned an undead minion."
+    str-fade: Your undead minion dies.
+pain:
+    spell-class: ".targeted.PainSpell"
+    name: pain
+    spell-icon: bone
+    description: Cause your enemy pain.
+    cast-item: blaze_rod
+    cooldown: 5
+    damage: 4
+    range: 15
+    ignore-armor: false
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+        - health 1
+    str-cost: 10 mana and a half heart
+    str-no-target: No target found.
+phase:
+    spell-class: ".instant.PhaseSpell"
+    name: phase
+    spell-icon: diamond
+    description: Phase through solid matter.
+    cast-item: stick
+    cooldown: 10
+    range: 5
+    max-distance: 15
+    allowed-pass-thru-blocks: []
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cant-phase: Unable to find place to phase to.
+poison:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: poison
+    spell-icon: spider_eye
+    description: Poison your target.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    type: 19
+    strength: 0
+    duration: 100
+    targeted: true
+    can-target: players,monsters
+    cost:
+        - mana 12
+    str-cost: 12 mana
+    str-cast-self: You have poisoned your target!
+    str-no-target: No target found.
+prayer:
+    spell-class: ".instant.PrayerSpell"
+    name: prayer
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cast-item: stick
+    cooldown: 15
+    amount-healed: 10
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
+purge:
+    spell-class: ".instant.PurgeSpell"
+    name: purge
+    spell-icon: potion:16396
+    description: Kill all monsters and animals around you.
+    cast-item: bone
+    cooldown: 60
+    range: 8
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    str-cast-self: You purge all life around you.
+    str-cast-others: "%a purges all nearby life."
+reach:
+    spell-class: ".buff.ReachSpell"
+    name: reach
+    spell-icon: dispenser
+    description: Place and destroy blocks from far away.
+    cast-item: stick
+    cooldown: 120
+    duration: 60
+    range: 15
+    consume-blocks: true
+    drop-blocks: true
+    disallowed-break-blocks: [0,7]
+    disallowed-place-blocks: [0,7]
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    str-cast-self: You gain the ability to manipulate the world around you.
+    str-fade: You can no longer manipulate the world around you.        
+recall:
+    spell-class: ".instant.RecallSpell"
+    name: recall
+    spell-icon: compass
+    description: Teleports you to your marked location.
+    cast-item: stick
+    cooldown: 300
+    mark-spell: mark
+    max-range: -1
+    allow-cross-world: true
+    use-bed-location: false
+    cost:
+        - mana 75
+        - iron_ingot 1
+    str-cost: 75 mana and 1 iron bar
+    str-cast-self: You teleport to your marked location.
+    str-no-mark: You have not marked a location to recall to.
+    str-other-world: You cannot recall to another world.
+    str-too-far: Your marked location is too far away.
+    str-cast-others: "%a disappears!"
+reflect:
+    spell-class: ".buff.ReflectSpell"
+    name: reflect
+    spell-icon: thin_glass
+    description: Reflect spells cast at you.
+    cooldown: 30
+    num-uses: 3
+    cost:
+        - mana 30
+    use-cost:
+        - mana 20
+    use-cost-interval: 1
+    str-cost: 30 mana, plus 20 mana per spell reflected
+    str-cast-self: You feel a magical barrier surround you.
+    str-cast-others: A magical barrier surrounds %a.
+    str-fade: Your magical barrier fades.
+repair:
+    spell-class: ".instant.RepairSpell"
+    name: repair
+    spell-icon: workbench
+    description: Repairs your gear.
+    cast-item: book
+    cooldown: 120
+    repair-amount: 300
+    to-repair:
+        - held
+        - hotbar
+        - inventory
+        - helmet
+        - chestplate
+        - leggings
+        - boots
+    ignore-items:
+        - 259
+        - 346
+    cost:
+        - mana 50
+        - iron_ingot 2
+    str-cost: 50 mana and 2 iron bars
+    str-cast-self: You've repaired your gear!
+    str-nothing-to-repair: You have nothing to repair.
+roar:
+    spell-class: ".instant.RoarSpell"
+    name: roar
+    spell-icon: mob_spawner
+    description: Forces nearby enemies to attack you.
+    cast-item: book
+    cooldown: 15
+    range: 8
+    can-target: monsters
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: "You roar, causing nearby enemies to attack you."
+    str-cast-others: "%a roars loudly!"
+safefall:
+    spell-class: ".buff.InvulnerabilitySpell"
+    name: safefall
+    spell-icon: feather
+    description: Allows you to fall without taking damage.
+    cast-item: book
+    cooldown: 60
+    damage-causes:
+        - fall
+    duration: 300
+    num-uses: 5
+    cost:
+        - mana 20
+    use-cost:
+        - 288 1
+    use-cost-interval: 1
+    str-cost: 20 mana, plus 1 feather each time you fall
+    str-cast-self: You feel lighter.
+    str-fade: Your normal weight returns.
+shadowstep:
+    spell-class: ".targeted.ShadowstepSpell"
+    name: shadowstep
+    spell-icon: leather_boots
+    cast-item: stick
+    effects:
+        - caster spawner
+        - target spawner
+    can-target: players,monsters
+    range: 15
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    str-no-landing-spot: Cannot shadowstep there.
+silence:
+    spell-class: ".targeted.SilenceSpell"
+    name: silence
+    spell-icon: raw_fish
+    description: Prevent a player from casting spells for a time.
+    cast-item: blaze_rod
+    range: 10
+    prevent-cast: true
+    prevent-chat: false
+    prevent-commands: false
+    duration: 200
+    allowed-spells:
+        - list
+        - help
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You have silenced %t.
+    str-cast-target: "%a has silenced you."
+    str-silenced: You are silenced.
+    str-no-target: No target found.
+spellhaste:
+    spell-class: ".buff.SpellHasteSpell"
+    name: spellhaste
+    spell-icon: ink_sack:4
+    description: Reduces the cast time and cooldown of your spells.
+    cast-item: book
+    cooldown: 60
+    duration: 15
+    cast-time-mod-amt: -50
+    cooldown-mod-amt: -50
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: Your mind quickens, allowing you to cast faster!
+    str-fade: Your mind slows again.
+stealth:
+    spell-class: ".buff.StealthSpell"
+    name: stealth
+    spell-icon: leather_boots
+    description: Become invisible to monsters.
+    cast-item: bone
+    cooldown: 60
+    duration: 20
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You become invisble to monsters.
+    str-fade: You are no longer invisible to monsters.
+stonevision:
+    spell-class: ".buff.StonevisionSpell"
+    name: stonevision
+    spell-icon: stone
+    description: See through stone.
+    cast-item: book
+    range: 4
+    transparent-type: 1
+    unobfuscate: false
+    cooldown: 60
+    duration: 30
+    cost: 
+        - mana 50
+        - stone 2
+        - glass 2
+    str-cost: 50 mana, 2 stone, and 2 glass
+    str-cast-self: You can see through stone!
+    str-fade: You can no longer see through stone.
+storm:
+    spell-class: ".targeted.AreaEffectSpell"
+    name: storm
+    spell-icon: gold_sword
+    description: Strike lightning upon all nearby enemies.
+    cast-item: bone
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: true
+    can-target: players,monsters,animals
+    spells:
+        - lightning
+    cooldown: 15
+    cost:
+        - mana 35
+    str-cost: 35 mana
+    str-cast-self: You call down a lightning storm!
+    str-no-target: No target found.
+stormblock:
+    spell-class: ".targeted.PulserSpell"
+    name: stormblock
+    spell-icon: diamond_block
+    description: Summons a diamond block that calls lightning down upon nearby enemies.
+    cast-item: blaze_rod
+    cooldown: 0
+    total-pulses: 100
+    interval: 30
+    max-distance: 20
+    cap-per-player: 2
+    block-type: gold_block
+    unbreakable: false
+    only-count-on-success: false
+    spells:
+        - storm
+    str-cast-self: You have summoned a storm block!
+    str-cast-others: "%a has summoned a storm block!"
+    str-at-cap: You have too many effects at once.
+    str-no-target: No target found.
+summon_helper:
+    spell-class: ".targeted.SummonSpell"
+    can-cast-with-item: false
+    can-cast-by-command: false
+    require-exact-name: false
+    require-acceptance: true
+    max-accept-delay: 90
+    accept-command: accept
+    str-usage: |
+        Usage: /cast summon <playername>, or /cast summon 
+        while looking at a sign with a player name on the first line.
+    str-no-target: Target player not found.
+    str-summon-pending: You are being summoned! Type /accept to teleport.
+    str-summon-accepted: You have been summoned.
+    str-summon-expired: The summon has expired.
+summon:
+    spell-class: ".instant.RitualSpell"
+    name: summon
+    spell-icon: portal
+    description: Summon another player to your position. This ritual requires 3 participants.
+    cast-item: stick
+    cooldown: 300
+    ritual-duration: 200
+    req-participants: 3
+    charge-reagents-immediately: true
+    set-cooldown-immediately: true
+    set-cooldown-for-all: true
+    spell: summon_helper
+    tick-interval: 5
+    effect-interval: 20
+    cost:
+        - mana 75
+        - redstone 3
+        - iron_ingot 3
+    str-cost: 75 mana, 3 redstone, and 3 iron bars
+    str-cast-self: You begin a summoning ritual.
+    str-cast-others: "%a has begun a summoning ritual. Right-click to participate."
+    str-ritual-joined: You have joined the summoning ritual.
+    str-ritual-success: The summoning ritual is a success!
+    str-ritual-interrupted: The summoning ritual has been interrupted.
+    str-ritual-failed: The summoning ritual has failed.
+sun:
+    spell-class: ".instant.TimeSpell"
+    name: sun
+    spell-icon: watch
+    description: Changes the time to morning.
+    cast-item: book
+    cooldown: 1800
+    cost:
+        - mana 75
+        - redstone 8
+        - watch 1
+    str-cost: 75 mana, 5 redstone dust and a clock
+    time-to-set: 0
+    str-announce: The sun has suddenly appeared in the sky!
+switch:
+    spell-class: ".targeted.SwitchSpell"
+    name: switch
+    spell-icon: eye_of_ender
+    description: Switch places with your target.
+    cast-item: stick
+    cooldown: 6
+    switch-back: 0
+    can-target: players
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have switched places with %t.
+    str-cast-target: "%a has switched places with you."
+    str-no-target: No target found.
+telekinesis:
+    spell-class: ".targeted.TelekinesisSpell"
+    name: telekinesis
+    spell-icon: lever
+    description: Manipulate switches and buttons remotely.
+    cast-item: stick
+    cooldown: 15
+    range: 20
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-no-target: You must target a switch or button.
+tree:
+    spell-class: ".targeted.TreeSpell"
+    name: tree
+    spell-icon: sapling
+    range: 15
+    cooldown: 5
+    tree-type: tree
+    animation-speed: 20
+    cost:
+        - mana 10
+        - sapling 1
+    str-cost: 10 mana and 1 sapling
+    str-no-target: You cannot grow a tree there.
+volley:
+    spell-class: ".targeted.VolleySpell"
+    name: volley
+    spell-icon: bow
+    description: Send a volley of arrows at your targeted location.
+    cast-item: blaze_rod
+    cooldown: 45
+    range: 30
+    arrows: 10
+    speed: 20
+    spread: 150
+    shoot-interval: 0
+    cost:
+        - mana 20
+        - arrow 2
+    str-cost: 20 mana and 2 arrows
+    str-cast-self: You fire a volley of magic arrows.
+    str-cast-others: "%a fires a volley of arrows."
+    str-no-target: No target found.
+walkway:
+    spell-class: ".buff.WalkwaySpell"
+    name: walkway
+    spell-icon: wood_stairs
+    description: Summon a moving magical walkway to take you places.
+    cast-item: book
+    cooldown: 60
+    platform-type: 5
+    size: 6
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cost:
+        - mana 50
+        - wood 1
+    use-cost:
+        - mana 15
+        - wood 1 
+    use-cost-interval: 15
+    str-cost: 50 mana, plus 15 mana and 1 wood every 15 blocks
+    str-cast-self: You summon a magical walkway.
+    str-fade: Your magical walkway disappears.
+wall:
+    spell-class: ".instant.WallSpell"
+    name: wall
+    spell-icon: brick
+    description: Creates a temporary wall to block your enemies.
+    cast-item: stick
+    cooldown: 15
+    range: 3
+    wall-width: 5
+    wall-height: 3
+    wall-type: brick
+    wall-duration: 15
+    cost:
+        - mana 12
+        - stone 2
+    str-cost: 12 mana and 2 stone
+    str-no-target: Unable to create a wall.
+water:
+    spell-class: ".targeted.MaterializeSpell"
+    name: water
+    spell-icon: water_bucket
+    description: Summons a water spring into existence.
+    cast-item: stick
+    cooldown: 120
+    range: 8
+    block-type: water
+    reset-delay: 200
+    apply-physics: true
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    str-failed: ""
+waterwalk:
+    spell-class: ".buff.WaterwalkSpell"
+    name: waterwalk
+    spell-icon: boat
+    description: Walk across the water.
+    cast-item: book
+    speed: 0.05
+    duration: 60
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cost:
+        - mana 25
+        - boat 1
+    use-cost:
+        - water_lily 1
+    use-cost-interval: 50
+    str-cost: 25 mana and 1 boat, plus 1 water lily every 50 blocks moved
+    str-cast-self: You can now walk on water!
+    str-fade: You can no longer walk on water.
+windwalk:
+    spell-class: ".buff.WindwalkSpell"
+    name: windwalk
+    spell-icon: feather
+    enabled: true
+    description: Fly through the air.
+    cast-item: book
+    fly-speed: 0.1
+    launch-speed: 1
+    cancel-on-land: false
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cancel-on-give-damage: false
+    cancel-on-take-damage: false
+    duration: 120
+    cost:
+        - mana 25
+        - feather 2
+    use-cost:
+        - feather 1
+    use-cost-interval: 15
+    str-cost: 25 mana, 2 feathers, plus 1 feather every 15 seconds
+    str-cast-self: You can now walk on the wind!
+    str-cast-others: "%a is now walking on the wind!"
+    str-fade: You are no longer walking on the wind.
+zap:
+    spell-class: ".targeted.ZapSpell"
+    name: zap
+    spell-icon: gold_pickaxe
+    description: Instantly destroys a block.
+    cast-item: stick
+    cooldown: 1
+    allowed-block-types: []
+    disallowed-block-types: [air, bedrock]
+    drop-block: false
+    drop-normal: true
+    effects:
+        - target blockbreak
+    check-plugins: true
+    range: 15
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-cast-self: You zapped a block.
+    str-cant-zap: You can't zap that.
+    str-no-target: No target found.
+    
+gianttree:
+    spell-class: ".ExternalCommandSpell"
+    name: gianttree
+    spell-icon: sapling:3
+    enabled: false
+    description: Create a giant tree!
+    cooldown: 300
+    can-cast-by-command: true
+    can-cast-with-item: false
+    command-to-execute: 
+        - "gt 25 4"
+    command-to-execute-later: []
+    command-delay: 0
+    command-to-block:
+        - "gt"
+    temporary-permissions: []
+    require-player-target: false
+    obey-los: true
+    range: 20
+    cost:
+        - mana 50
+        - sapling 5
+    str-cost: 50 mana and 5 saplings
+    str-cast-self: You grow a tree!
+    str-cant-use-command: "&4You don't have permission to do that."
+    
+torcharrow:
+    spell-class: ".PermissionSpell"
+    name: torcharrow
+    spell-icon: torch
+    enabled: false
+    description: Shoot torch arrows.
+    cast-item: book
+    cooldown: 10
+    can-cast-by-command: true
+    can-cast-with-item: true
+    permission-nodes:
+        - "torcharrow.tArrow"
+    duration: 600
+    cost:
+        - mana 25
+        - torch 3
+    str-cost: 25 mana and 3 torches
+    str-cast-self: You can now fire torch arrows.
+    
+zeus:
+    spell-class: ".MultiSpell"
+    name: zeus
+    spell-icon: gold_axe
+    cooldown: 30
+    check-individual-cooldowns: false
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    spells:
+        - lightning
+        - DELAY 5
+        - explode
+        

@@ -1,0 +1,419 @@
+debug: false
+debug-level: 3
+enable-error-logging: true
+enable-stat-collection: true
+enable-volatile-features: true
+enable-tab-completion: true
+str-cast-usage: |
+    Usage: /cast <spell>. 
+    Use /cast list to see a list of spells.
+str-unknown-spell: You do not know a spell with that name.
+str-spell-change: You are now using the %s spell.
+str-spell-change-empty: You are no longer using a spell.
+str-on-cooldown: That spell is on cooldown (%c seconds remaining).
+str-missing-reagents: You do not have the required reagents for that spell.
+str-cant-cast: You can't cast that spell right now.
+str-wrong-world: You cannot cast that spell here.
+str-console-name: Admin
+text-color: 3
+broadcast-range: 20
+spell-icon-slot: -1
+separate-player-spells-per-world: false
+allow-cycle-to-no-spell: false
+always-show-message-on-cycle: false
+only-cycle-to-castable-spells: true
+allow-cast-with-fist: true
+cast-with-left-click: true
+cast-with-right-click: true
+ops-have-all-spells: false
+ops-ignore-reagents: false
+ops-ignore-cooldowns: false
+ops-ignore-cast-times: false
+default-all-perms-false: false
+ignore-default-bindings: false
+ignore-cast-item-enchants: true
+ignore-cast-item-names: false
+ignore-cast-item-durability: [ 261, 268, 269, 270, 271, 283, 284, 285, 286, 290, 294, 314, 315, 316, 317 ]
+los-transparent-blocks: [ 0, 27, 28, 31, 32, 37, 38, 39, 40, 50, 51, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 78, 93, 94, 106, 111 ]
+global-cooldown: 500
+check-world-pvp-flag: true
+cast-on-animate: false
+use-exp-bar-as-cast-time-bar: true
+cooldowns-persist-through-reload: true
+enable-magic-xp: true
+magic-xp-auto-learn: true
+str-xp-auto-learned: "You have learned the %s spell!"
+str-xp-header: "Magic Experience:"
+magic-schools:
+    arcane: "   &dArcane&f"
+    fire: "   &cFire&f"
+    frost: "   &9Frost&f"
+    light: "   &eLight&f"
+    legendary: "   &5Legendary&f"
+    necromancy: "   &5Necromancy&f"
+    enchanter: "   &5Enchanter&f"
+    earth: "   &cEarth&f"
+    wizardery: "   &6Wizardery&f"
+str-xp-auto-learned: "Congrats, you learned %s!"
+str-xp-header: "Mana"
+str-no-xp: "Sorry, you don't have any mana. Do some spells!"
+
+entity-names:
+    zombie: an ugly zombie
+    skeleton: a scary skeleton
+    spider: a spider
+    cavespider: a nasty little spider
+    creeper: a creepy creeper
+    slime: a slimy blob
+    wolf: a wolf
+    snowman: a snow golem
+    villager: an innocent villager
+    enderman: Mr. Enderman
+    silverfish: a slimy silverfish
+    ghast: a ghast
+    pigzombie: a pig zombie
+    blaze: a blaze
+    lavaslime: a magma slime
+    giant: the giant
+    enderdragon: the ender dragon
+    cow: a cow
+    sheep: a sheep
+    pig: a smelly pig
+    chicken: a duck
+    mushroomcow: a deformed cow
+    squid: a slimy squid
+    irongolem: a friendly iron golem
+predefined-items:
+    Swamwand:
+        type: "stick"
+        name: "&6S&4w&3a&bm&7m&di&ce &1W&aa&en&6d"
+        lore:
+          - "&dits almost like you force feed them one"
+        attributes:
+            attr1: "generic.movementSpeed .1 add"
+    magicquest_runestone_homestone:
+        type: "clay_ball"
+        name: "&6Runestone of Household"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals comforting to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and creates a portalto your home"
+    magicquest_runestone_worlding:
+        type: "clay_ball"
+        name: "&6Runestone of spawning"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals welcoming to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and brings you to the center of the world"
+    magicquest_scroll_mark:
+        type: "paper"
+        name: "&6Scroll of Marking"
+        lore:
+          - "&5This allows you to place"
+          - "&5 a rune down to beable return to"
+    three_ring:
+        type: "409"
+        name: "&2Ring of Power"
+        enchants:
+          - "silk_touch 33"
+    cali_ring:
+        type: "gold_nugget"
+        name: "&2Cali's Ring of Power"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "fire_aspect 20"
+          - "damage_all 20"
+    magicquest_runestone_healing:
+        type: "clay_ball"
+        name: "&6Runestone of Healing"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals warm to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and heals you"
+    magicquest_scroll_volly:
+        type: "paper"
+        name: "&6Scroll of Volly"
+        lore:
+          - "&5This allows you to throw arrows"
+          - "&5costs ten arrows"
+    magicquest_scroll_waterbreathing:
+        type: "paper"
+        name: "&6Scroll Water Breathing"
+        lore:
+          - "&5This allows you you breath underwater"
+          - "&5costs 50 mana and reeds"
+    magicquest_scroll_thrunderstorm:
+        type: "paper"
+        name: "&6Scroll of the Thunderstorm"
+        lore:
+          - "&5This creates a thunderstorm spell"
+          - "&5costs 50 mana"
+    magicquest_scroll_deathscream:
+        type: "paper"
+        name: "&6Scroll of the summon."
+        lore:
+          - "&5This summons a monster that"
+          - "&5brings death with all that"
+          - "&5gets within its grasp"
+          - "&5costs 50 mana and a gold block"
+    magicquest_earthwand:
+        type: "stick"
+        name: "&5Earth Wand"
+        lore:
+          - "&7The entire world bends"
+          - "&7to do your bidding"
+        enchants:
+          - "silk_touch 33"
+    magicquest_enchanterwand:
+        type: "feather"
+        name: "&5Enchanting Quill"
+        lore:
+          - "&7This allows you to place runes"
+          - "&7alowing you to alter the world"
+        enchants:
+          - "knockback 9"
+    magicquest_necrowand:
+        type: "bone"
+        name: "&5Necromancer Staff"
+        lore:
+          - "&7The undead of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "damage_undead 10"
+    magicquest_armor:
+        type: "388"
+        name: "&5Magic Robes"
+        lore:
+          - "&7Magic robes that are light and"
+          - "&7allows you to wave that wand around"
+        attributes:
+            attr1: "generic.maxHealth 20 add"
+        enchants:
+          - "thorns 2"
+    Magicquest_learning_keyscroll:
+        type: "written_book"
+        title: "&dMagic Scroll"
+        author: "&6The_Maker_of_Magic"
+        pages:
+          - |
+            oshfit zahrel naizridi
+            To The House Of Houses
+            Magic Is Preformed Togeather
+          - |
+            Mahal-kuk-khizdîn
+            The Creater And Making Of Magic 
+    magicquest_legendarywand:
+        type: "stick"
+        name: "&5Legendary Wand"
+        lore:
+          - "&ayour power becomes Legendary!"
+          - "&aAll the worlds forces are at"
+          - "&ayour hands"
+        enchants:
+          - "fire_aspect 10"
+    magicquest_firewand:
+        type: "blaze_rod"
+        name: "&cFire Wand"
+        lore:
+          - "&7The fires of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "fire_aspect 5"
+    magicquest_arcanewand:
+        type: "bone"
+        name: "&dArcane Wand"
+        lore:
+          - "&7The darkness of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "damage_undead 7"
+    magicquest_frostwand:
+        type: "stick"
+        name: "&9Frost Wand"
+        lore:
+          - "&7The waters of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "silk_touch 33"
+    magicquest_lightwand:
+        type: "feather"
+        name: "&eLight Wand"
+        lore:
+          - "&7The lights of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "knockback 9"
+    Ghureg_ring:
+        type: "emerald"
+        name: "&2Ghureg's Ring of Power"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "fire_aspect 20"
+          - "damage_all 20"
+    skywars_Lootpot:
+        type: "373:8257"
+        name: "&CLoot Pot"
+        lore:
+          - "&5DvZ has healing pots,"
+          - "&5well we have pots that"
+          - "&5we stuff things into."
+          - "&5so drink up and dont choke"
+          - "&5on your sword... or your bow"
+          - "&5or what ever you get in there"
+          - "&6Drink to get your kit"
+        potioneffects:
+          - "9 1 200"
+          - "10 8 200"
+          - "23 100 200"
+    weeding_ring:
+        type: "371"
+        name: "&6Wedding Ring"
+        lore:
+          - "&5A beautiful gold wedding ring"
+    skywars_wand:
+        type: "blaze_rod"
+        name: "&7Skywars Wand &4STAFF ONLY"
+        lore:
+          - "&5Use this to run and play"
+          - "&5Diffrent games of skywars"
+          - "&4SHOULD BE USED BY"
+          - "&4ADMIN/STAFF ONLY"
+          - "&4ANY PLAYER FOUND WITH THIS ITEM"
+          - "&4WILL BE PERMINTLY BANNED ON SITE"
+    skywars_pick:
+        type: "iron_pickaxe"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Ya you read that right..."
+          - "&5Im just to lasy to"
+          - "&5change it."
+          - "&4Ctrl+c then Ctrl+v"
+          - "&4makes prgraming go faster"
+    skywars_basicisword:
+        type: "iron_sword"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Just a basic sword..."
+          - "&5Nothing special here"
+    skywars_basicdsword:
+        type: "diamond_sword"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Ya you read that right..."
+          - "&5Im just to lasy to"
+          - "&5change it."
+          - "&4Ctrl+c then Ctrl+v"
+          - "&4makes prgraming go faster"
+    skywars_basicssword:
+        type: "stone_sword"
+        name: "&7Stone Sword"
+        lore:
+          - "&5Just a basic sword..."
+          - "&5Nothing special here"
+    skywars_basicbow:
+        type: "bow"
+        name: "&7Bow"
+        lore:
+          - "&5What do you exspect,"
+          - "&5a special tool tip?"
+    skywars_basicarrow:
+        type: "arrow"
+        name: "&7Steel Tiped Arrow"
+        lore:
+          - "&5Just a basic arrow..."
+          - "&5do you people really"
+          - "&5expect me to put cool"
+          - "&5things in these"
+          - "&5descriptions?"
+    skywars_basiclchest:
+        type: "leather_chestplate"
+        name: "&4Healing Chestplate"
+        color: "800000"
+        lore:
+          - "&5Dues not take a lot of"
+          - "&5protection but it gives health"
+        attributes:
+            attr1: "generic.maxHealth 8 add"
+    skywars_basicIchest:
+        type: "iron_chestplate"
+        name: "&4Chestplate"
+        lore:
+          - "&5Great tanky protection"
+        enchants:
+          - "THORNS 2"
+    skywars_basicdchest:
+        type: "diamond_chestplate"
+        name: "&4Heavy_ Chestplate"
+        lore:
+          - "&5Great knockback protection"
+        enchants:
+          - "PROTECTION_PROJECTILE 4"
+    skywars_basicgchest:
+        type: "317"
+        name: "&4Feet air"
+        lore:
+          - "&5feels great on the feet"
+        enchants:
+          - "PROTECTION_FALL 2"
+        attributes:
+            attr1: "generic.maxHealth 4 add"
+    skywars_basictnt:
+        type: "46"
+        name: "&4Boom?"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+    skywars_basicstone:
+        type: "98"
+        name: "&4Stone Brick"
+        lore:
+          - "&5These stones where mined"
+          - "&5from a mountin way... wait"
+          - "&5I just relised im to lasy"
+          - "&5to type out the backstory of"
+          - "&5these...even beter, why "
+          - "&5is thir a backstory?!?"
+    skywars_basiclog:
+        type: "162"
+        name: "&4Log"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+          - "&5Ya thats right just wait"
+          - "&5It will boom soon enough"
+    skywars_basicglass:
+        type: "20"
+        name: "&4Glass"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+          - "&5Ya thats right just wait"
+          - "&5It will boom soon enough"
+    Jellybow:
+        type: "261"
+        name: "&3Weetigo"
+        lore:
+          - "&5Every one has hured"
+          - "&5of the weetigo"
+          - "&5hopefully it dues not go your weet"
+    skywars_basicgpot:
+        type: "373:8257"
+        name: "&4Exp Ale"
+        lore:
+          - "&9This stuff is strong"
+        potioneffects:
+          - "1 1 200"
+          - "3 1 200"
+          - "10 1 200"
+    skywars_basicbpot:
+        type: "373:16454"
+        name: "&4Ale of the dead"
+        lore:
+          - "&9This stuff is strong"
+        potioneffects:
+          - "2 1 20"
+          - "4 1 20"
+          - "9 1 20"
+          - "11 1 10"
