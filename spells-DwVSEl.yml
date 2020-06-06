@@ -1,0 +1,307 @@
+log:
+    spell-class: ".instant.ConjureSpell"
+    name: log
+    spell-icon: feather
+    description: turn your logs into plank
+    cast-item: book
+    cooldown: 0
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: false
+    cooldown: 0.5
+    effects:
+      sound1:
+        position: caster
+        effect: sound
+        sound: step.wood
+        volume: 1.0
+        pitch: 1.0
+    items:
+        - logs 1-2 100%
+    cost:
+        - logs 1
+    add-to-inventory: true
+    str-cost: 1 log
+plank:
+    spell-class: ".instant.ConjureSpell"
+    name: plank
+    spell-icon: feather
+    description: turn your logs into plank
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - planks 1-5 100%
+    cost:
+        - logs 1
+    add-to-inventory: true
+    str-cost: 1 log
+stick:
+    spell-class: ".instant.ConjureSpell"
+    name: stick
+    spell-icon: feather
+    description: turn your logs into plank
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - stick 1-2 100%
+    cost:
+        - planks 1
+    add-to-inventory: true
+    str-cost: 1 plank
+miningcast:
+    spell-class: ".PassiveSpell"
+    name: miningcast
+    triggers: 
+        - blockbreak 13
+    chance: 100
+    cooldown: 0
+    spells:
+        - stoneget
+        - goldget
+stoneget:
+    spell-class: ".instant.ConjureSpell"
+    name: stoneget
+    spell-icon: feather
+    description: get some stone
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - cstone 2-10 100%
+    cost:
+        - planks 1
+    add-to-inventory: true
+    str-cost: 1 plank
+goldget:
+    spell-class: ".instant.ConjureSpell"
+    name: goldget
+    spell-icon: feather
+    description: turn your logs into plank
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - goldingot 1-2 10%
+    add-to-inventory: true
+    str-cost: 1 plank
+armorbuild1:
+    spell-class: ".instant.DummySpell"
+    name: armorbuild1
+    effect:
+      2:
+        position: target
+        effect: particles
+        particle-name: smoke
+        horiz-spread: 0.2
+        vert-spread: 0.2
+        speed: 0.2
+        count: 5
+armorcast:
+    spell-class: ".PassiveSpell"
+    name: armorcast
+    triggers: 
+        - blockbreak 41
+    chance: 100
+    cooldown: 0
+    spells:
+        - darmorreceve
+darmorreceve:
+    spell-class: ".instant.ConjureSpell"
+    name: goldreceve
+    spell-icon: feather
+    description: get darmor item
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - darmorcast 1 100%
+    add-to-inventory: true
+    effect:
+      1:
+        position: caster
+        effect: smoke
+      2:
+        position: caster
+        effect: sound
+        sound: randome.anvil_break
+darmor_player:
+    spell-class: ".ExternalCommandSpell"
+    cast-item: darmorcast
+    name: armor_player
+    enabled: true
+    command-to-execute:
+        - "c darmor"
+    require-player-target: true
+    execute-as-target-instead: true
+    obey-los: true
+    range: 5
+    cost:
+        - darmorcast 1
+darmor:
+    spell-class: ".buff.ArmorSpell"
+    name: darmor
+    duration: 0
+    num-uses: 0
+    helmet: dwarf_armorha
+    chestplate: dwarf_armorch
+    leggings: dwarf_armorle
+    boots: dwarf_armorbo
+    str-has-armor: You cannot cast this spell if you are already wearing armor.
+shovelgetcast:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - rightclickblocktype 27
+    chance: 100
+    cooldown: 4
+    spells:
+        - shovelget
+dbowgetcast:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - rightclickblocktype 28
+    chance: 100
+    cooldown: 4
+    spells:
+        - dbowget
+shovelget:
+    spell-class: ".instant.ConjureSpell"
+    name: shovelget
+    spell-icon: redstone
+    description: get a shovel.
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - 256 1 100%
+    add-to-inventory: true
+    str-cost: free
+    str-cast-self: You have conjured some potion reagents!
+dbowget:
+    spell-class: ".instant.ConjureSpell"
+    name: dbowget
+    spell-icon: redstone
+    description: get a dwarven bow.
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - dbow 1 100%
+    add-to-inventory: true
+    str-cost: free
+    str-cast-self: You have conjured some potion reagents!
+earmor_player:
+    spell-class: ".ExternalCommandSpell"
+    cast-item: earmorcast
+    name: earmor_player
+    enabled: true
+    command-to-execute:
+        - "c earmor"
+    require-player-target: true
+    execute-as-target-instead: true
+    obey-los: true
+    range: 20
+    cost:
+        - earmorcast 1
+earmor:
+    spell-class: ".buff.ArmorSpell"
+    name: earmor
+    duration: 0
+    num-uses: 0
+    helmet: elf_armorha
+    chestplate: elf_armorch
+    leggings: elf_armorle
+    boots: elf_armorbo
+    str-has-armor: You cannot cast this spell if you are already wearing armor.
+earmorcast:
+    spell-class: ".PassiveSpell"
+    name: armorcast
+    triggers: 
+        - blockbreak 57
+    chance: 100
+    cooldown: 0
+    spells:
+        - earmorreceve
+earmorreceve:
+    spell-class: ".instant.ConjureSpell"
+    name: goldreceve
+    spell-icon: feather
+    description: get earmor item
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - earmorcast 1 100%
+    add-to-inventory: true
+clothgetcast:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - rightclickblocktype 35:6
+    chance: 100
+    cooldown: 1
+    spells:
+        - clothget
+clothget:
+    spell-class: ".instant.ConjureSpell"
+    name: clothget
+    spell-icon: redstone
+    description: get a elven cloth.
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - woolarmorblock 1-3 20%
+        - strings 1-5 80%
+    add-to-inventory: true
+    str-cost: free
+ebowmake:
+    spell-class: ".PassiveSpell"
+    triggers: 
+        - rightclickblocktype 85
+    chance: 100
+    cooldown: 4
+    cast-time: 300
+    cost:
+        - stick 1
+        - strings 3
+    spells:
+        - ebowget
+ebowget:
+    spell-class: ".instant.ConjureSpell"
+    name: ebowget
+    spell-icon: redstone
+    description: get a dwarven bow.
+    power-affects-quantity: false
+    power-affects-chance: false
+    cast-time: 300
+    calculate-drops-individually: true
+    auto-equip: true
+    items:
+        - ebow 1 100%
+    cost:
+        - stick 1
+        - strings 3
+    add-to-inventory: true
+    str-cost: free
