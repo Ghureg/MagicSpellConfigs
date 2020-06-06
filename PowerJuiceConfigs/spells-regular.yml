@@ -1,0 +1,528 @@
+juice_leap:
+    spell-class: ".instant.LeapSpell"
+    always-granted: true
+    description: Leap forward.
+    cast-item: juicing_bow
+    forward-velocity: 30
+    upward-velocity: 8
+    cancel-damage: true
+    modifiers:
+        - onblock 0 required
+juice_safefall:
+    spell-class: ".buff.InvulnerabilitySpell"
+    always-granted: true
+    spell-icon: gold_chestplate
+    description: Makes you invulnerable to damage.
+    toggle: false
+    damage-causes:
+        - fall
+    duration: 0
+juicesafefalltrigger:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - buff
+    chance: 100
+    spells:
+        - juice_safefall
+juiceslimejump:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - stopsneak
+    chance: 100
+    modifiers:
+        - onblock 165 required
+    spells:
+        - juice_leapslime
+juice_leapslime:
+    spell-class: ".instant.LeapSpell"
+    always-granted: true
+    description: Leap forward.
+    forward-velocity: 0
+    upward-velocity: 80
+    cancel-damage: true
+juicekill:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - kill
+    chance: 100
+    spells:
+        - killdummy
+        - killdummyair
+juicekiledl:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - respawn
+    chance: 100
+    spells:
+        - Deathdummy
+        - deathmulti
+deathmulti:
+    spell-class: ".MultiSpell"
+    cooldown: 30
+    check-individual-cooldowns: false
+    spells:
+        - clear
+        - DELAY 5
+        - bowspawn 
+        - armor
+        - DELAY 5
+        - give
+        - DELAY 200
+        - invulnerability
+        - spawnmulti
+clear:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: true
+    command-to-execute:
+        - "clear %a"
+    block-chat-output: true
+give:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: true
+    command-to-execute:
+        - "give %a minecraft:arrow"
+    block-chat-output: true
+bowspawn:
+    spell-class: ".instant.ConjureSpell"
+    always-granted: true
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: false
+    auto-equip: true
+    items:
+        - juicing_bow 1 100%
+    add-to-inventory: true
+    str-cost: free 
+armor:
+    spell-class: ".buff.ArmorSpell"
+    permanent: true
+    helmet: juicing_bow2
+Deathdummy:
+    spell-class: ".instant.DummySpell"
+    always-granted: true
+    effects:
+      1:
+        position: caster
+        effect: soundpersonal
+        sound: note.hat
+    variable-mods-cast:
+        - kills -3
+killdummy:
+    spell-class: ".instant.DummySpell"
+    always-granted: true
+    effects:
+      1:
+        position: caster
+        effect: soundpersonal
+        sound: note.pling
+    variable-mods-cast:
+        - kills 1
+potionkill:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - kill Pig
+    chance: 100
+    cast-without-target: true
+    spells:
+        - econjurepotion
+        - pigmulti
+killdummyair:
+    spell-class: ".instant.DummySpell"
+    always-granted: true
+    modifiers:
+        - onblock 0 required
+    variable-mods-cast:
+        - kills 2
+econjurepotion:
+    spell-class: ".instant.ConjureSpell"
+    always-granted: true
+    description: Conjure some potion reagents.
+    power-affects-quantity: false
+    power-affects-chance: false
+    calculate-drops-individually: false
+    auto-equip: true
+    items:
+        - juice_exsplotion 1 100%
+    add-to-inventory: true
+    str-cost: free  
+bowexplode:
+    spell-class: ".BowSpell"
+    always-granted: true
+    bow-name: "&9Hunting Bow"
+    spell: "juice_explosive"
+    modifiers:
+        - potioneffect 12 required
+juice_explosive:
+    spell-class: ".instant.ProjectileSpell"
+    always-granted: true
+    spell-icon: arrow
+    description: Cause an explosion where an arrow lands
+    projectile: enderpearl
+    velocity: 0
+    require-hit-entity: false
+    cancel-damage: true
+    remove-projectile: true
+    max-distance: 100
+    spells: [juice_explode]
+juice_explode:
+    spell-class: ".targeted.ExplodeSpell"
+    always-granted: true
+    name: explode
+    spell-icon: tnt
+    description: Create an explosion.
+    range: 100
+    explosion-size: 8
+    backfire-chance: 0
+    prevent-block-damage: true
+    prevent-player-damage: false
+    damage-multiplier: 100
+    add-fire: false
+    simulate-tnt: false
+    ignore-canceled: false
+pigsummon1:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "summon Pig 2 96 -1"
+    block-chat-output: true
+pigsummon2:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "summon Pig -2 90 0"
+    block-chat-output: true
+pigsummon3:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "summon Pig 0 86 2"
+    block-chat-output: true
+pigsummon4:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "summon Pig 2 80 -3"
+    block-chat-output: true
+pigmulti:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    cast-random-spell-instead: true
+    spells:
+        - pigsummon1
+        - pigsummon2
+        - pigsummon3
+        - pigsummon4
+spawnmulti:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    cast-random-spell-instead: true
+    spells:
+        - spawn1
+        - spawn2
+        - spawn3
+        - spawn4
+        - spawn5
+        - spawn6
+        - spawn7
+        - spawn8
+spawn1:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp -66 101 64"
+    block-chat-output: true
+spawn2:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp -94 101 0"
+    block-chat-output: true
+spawn3:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp -73 101 -63"
+    block-chat-output: true
+spawn4:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp 0 101 -90"
+    block-chat-output: true
+spawn5:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp 61 101 -65"
+    block-chat-output: true
+spawn6:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp 90 101 1"
+    block-chat-output: true
+spawn7:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp 69 101 62"
+    block-chat-output: true
+spawn8:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: false
+    temporary-op: true
+    command-to-execute:
+        - "tp 0 101 92"
+    block-chat-output: true
+invulnerability:
+    spell-class: ".buff.InvulnerabilitySpell"
+    spell-icon: gold_chestplate
+    description: Makes you invulnerable to damage.
+    toggle: false
+    damage-causes:
+        - block explosion
+        - contact
+        - custom
+        - drowning
+        - entity attack
+        - entity explosion
+        - fall
+        - fire
+        - fire tick
+        - lava
+        - lightning
+        - magic
+        - poison
+        - projectile
+        - starvation
+        - suffocation
+        - void
+        - wither
+    duration: 10
+color_trigger:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    global-cooldown: 6
+    triggers: 
+        - ticks 1200
+    spells:
+        - colormulti
+    modifiers:
+        - world PowerJuice required
+
+colormulti:
+    spell-class: ".MultiSpell"
+    always-granted: true
+    check-individual-cooldowns: false
+    cast-random-spell-instead: true
+    spells:
+        - greenmulti
+        - bluemulti
+        - redmutli
+    effects:
+      1:
+        position: caster
+        effect: sound
+        sound: mob.ghast.affectionate_scream
+count1:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&510"
+count2:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&55"
+count3:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&54"
+count4:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&53"
+count5:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&52"
+count6:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&51"
+count7:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&5MUHAHAHAHA"
+      2:
+        position: caster
+        effect: sound
+        sound: mob.ghast.scream
+greenmulti:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    cast-random-spell-instead: false
+    spells:
+        - green_anounce
+        - DELAY 20
+        - count1
+        - DELAY 100
+        - count2
+        - DELAY 20
+        - count3
+        - DELAY 20
+        - count4
+        - DELAY 20 
+        - count5
+        - DELAY 20
+        - count6
+        - DELAY 20
+        - count7
+        - greenstorm
+green_anounce:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&2GREEN"
+      2:
+        position: caster
+        effect: actionbartext
+        message: "&2GREEN"
+greenstorm:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: true
+    command-to-execute:
+        - "kill %a"
+    modifiers:
+        - onblock 95:13 denied
+    effects:
+      1:
+        position: caster
+        effect: lightning
+    block-chat-output: true
+bluemulti:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    cast-random-spell-instead: false
+    spells:
+        - blue_anounce
+        - DELAY 20
+        - count1
+        - DELAY 100
+        - count2
+        - DELAY 20
+        - count3
+        - DELAY 20
+        - count4
+        - DELAY 20 
+        - count5
+        - DELAY 20
+        - count6
+        - DELAY 20
+        - count7
+        - bluestorm
+blue_anounce:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&9BLUE!"
+      2:
+        position: caster
+        effect: actionbartext
+        message: "&9BLUE"
+bluestorm:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: true
+    command-to-execute:
+        - "kill %a"
+    modifiers:
+        - onblock 95:11 denied
+    effects:
+      1:
+        position: caster
+        effect: lightning
+    block-chat-output: true
+redmutli:
+    spell-class: ".MultiSpell"
+    check-individual-cooldowns: false
+    cast-random-spell-instead: false
+    spells:
+        - red_anounce
+        - DELAY 20
+        - count1
+        - DELAY 100
+        - count2
+        - DELAY 20
+        - count3
+        - DELAY 20
+        - count4
+        - DELAY 20 
+        - count5
+        - DELAY 20
+        - count6
+        - DELAY 20
+        - count7
+        - redstorm
+red_anounce:
+    spell-class: ".instant.DummySpell"
+    effects:
+      1:
+        position: caster
+        effect: title
+        title: "&cRED!"
+      2:
+        position: caster
+        effect: actionbartext
+        message: "&cRED"
+redstorm:
+    spell-class: ".ExternalCommandSpell"
+    execute-on-console-instead: true
+    command-to-execute:
+        - "kill %a"
+    modifiers:
+        - onblock 95:14 denied
+    effects:
+      1:
+        position: caster
+        effect: lightning
+    block-chat-output: true
