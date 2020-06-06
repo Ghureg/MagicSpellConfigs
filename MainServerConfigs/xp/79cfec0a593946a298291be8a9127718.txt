@@ -1,0 +1,5 @@
+light: 2
+legendary: 2
+frost: 2
+fire: 2
+arcane: 2

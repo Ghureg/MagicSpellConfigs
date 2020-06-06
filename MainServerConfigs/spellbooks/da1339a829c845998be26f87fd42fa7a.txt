@@ -1,0 +1,5 @@
+Weetigo
+help
+list
+skywars_basicarrow
+spawn

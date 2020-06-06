@@ -1,0 +1,765 @@
+debug: false
+debug-level: 3
+enable-error-logging: true
+enable-stat-collection: true
+enable-volatile-features: true
+enable-tab-completion: true
+str-cast-usage: |
+    Usage: /cast <spell>. 
+    Use /cast list to see a list of spells.
+str-unknown-spell: You do not know a spell with that name.
+str-spell-change: You are now using the %s spell.
+str-spell-change-empty: You are no longer using a spell.
+str-on-cooldown: That spell is on cooldown (%c seconds remaining).
+str-missing-reagents: You do not have the required reagents for that spell.
+str-cant-cast: You can't cast that spell right now.
+str-wrong-world: You cannot cast that spell here.
+str-console-name: Admin
+text-color: 3
+broadcast-range: 20
+spell-icon-slot: -1
+separate-player-spells-per-world: false
+allow-cycle-to-no-spell: false
+always-show-message-on-cycle: false
+only-cycle-to-castable-spells: true
+allow-cast-with-fist: true
+cast-with-left-click: true
+cast-with-right-click: true
+ops-have-all-spells: false
+ops-ignore-reagents: false
+ops-ignore-cooldowns: false
+ops-ignore-cast-times: false
+default-all-perms-false: false
+ignore-default-bindings: false
+ignore-cast-item-enchants: true
+ignore-cast-item-names: false
+ignore-cast-item-durability: [ 261, 268, 269, 270, 271, 283, 284, 285, 286, 290, 294, 314, 315, 316, 317 ]
+los-transparent-blocks: [ 0, 27, 28, 31, 32, 37, 38, 39, 40, 50, 51, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 78, 93, 94, 106, 111 ]
+global-cooldown: 500
+check-world-pvp-flag: true
+cast-on-animate: false
+use-exp-bar-as-cast-time-bar: true
+cooldowns-persist-through-reload: true
+enable-magic-xp: true
+magic-xp-auto-learn: true
+str-xp-auto-learned: "You have learned the %s spell!"
+str-xp-header: "Magic Experience:"
+magic-schools:
+    arcane: "   &dArcane&f"
+    fire: "   &cFire&f"
+    frost: "   &9Frost&f"
+    light: "   &eLight&f"
+    legendary: "   &5Legendary&f"
+    necromancy: "   &5Necromancy&f"
+    enchanter: "   &5Enchanter&f"
+    earth: "   &cEarth&f"
+    wizardery: "   &6Wizardery&f"
+str-xp-auto-learned: "Congrats, you learned %s!"
+str-xp-header: "Mana"
+str-no-xp: "Sorry, you don't have any mana. Do some spells!"
+
+variables:
+    goldfind:
+        type: global
+        default: 0
+        min: 0
+        max: 50
+        permanent: true
+        exp-bar: true
+entity-names:
+    zombie: an ugly zombie
+    skeleton: a scary skeleton
+    spider: a spider
+    cavespider: a nasty little spider
+    creeper: a creepy creeper
+    slime: a slimy blob
+    wolf: a wolf
+    snowman: a snow golem
+    villager: an innocent villager
+    enderman: Mr. Enderman
+    silverfish: a slimy silverfish
+    ghast: a ghast
+    pigzombie: a pig zombie
+    blaze: a blaze
+    lavaslime: a magma slime
+    giant: the giant
+    enderdragon: the ender dragon
+    cow: a cow
+    sheep: a sheep
+    pig: a smelly pig
+    chicken: a duck
+    mushroomcow: a deformed cow
+    squid: a slimy squid
+    irongolem: a friendly iron golem
+predefined-items:
+    gold_coin:
+        type: 371
+        name: "&aGold Coin"
+        unbreakable: true
+        lore: 
+          - "&5A common gold coin"
+    Throwing_knife:
+        type: 268
+        name: "&9Throwing Knives"
+        unbreakable: true
+        lore: 
+          - "&5Magic Throwing knives that"
+          - "&5Come back to you after some time"
+        attributes:
+            attr7: "generic.movementSpeed .05 add"
+    Ghureg_Staff:
+        type: 283
+        name: "&2Ghureg's Staff of Single Spells"
+        unbreakable: true
+        lore: 
+          - "&7An odd staff"
+          - "&7of distruction"
+        attributes:
+            attr2: "generic.knockbackResistance 1 add"
+            attr4: "generic.armor 500 multiply"
+            attr5: "generic.armorToughness 500 multiply"
+            attr6: "generic.attackDamage 8 multiply"
+            attr7: "generic.movementSpeed -0.008 add"
+        enchants:
+          - "silk_touch 33"
+          - "damage_all 20"
+    Jelly_armor:
+        type: 388
+        name: "&5Jelly's armor"
+        lore: 
+          - "&7Armor Jelly made me make this"
+          - "&7becuase i lost a bet"
+        attributes:
+            attr1: "generic.maxHealth 200 add"
+            attr2: "generic.knockbackResistance 1 add"
+            attr4: "generic.armor 500 add"
+            attr5: "generic.armorToughness 500 add"
+            attr6: "generic.attackDamage 8 add"
+            attr7: "generic.movementSpeed .05 add"
+    leap_boots:
+        type: 317
+        name: "&5Boots of Leaping"
+        lore: 
+          - "&7These boots are made out of heavy gold"
+          - "&7but once put on your feet you they feel light"
+          - "&7and whight runes shine brightly on their souls"
+        attributes:
+            attr5: "generic.armorToughness 500 add"
+            attr7: "generic.movementSpeed .05 add"
+    Sackferice_dagger:
+        type: "267"
+        name: "&4Sacrificial knife"
+        lore:
+          - "&dA decorated knife, dues not seem to have a use"
+    Spear:
+        type: "267"
+        name: "&4Sacrificial knife"
+        lore:
+          - "&dA Spear that has a exctend reach"
+    admin:
+        type: "stick"
+        name: "&6Admin Wand"
+        lore:
+          - "&dPunch around to find a hidden block"
+        attributes:
+            attr1: "generic.movementSpeed .1 add"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "fire_aspect 20"
+          - "damage_all 20"
+    blockstick:
+        type: "stick"
+        name: "&6Block Finder"
+        lore:
+          - "&dPunch around to find a hidden block"
+        attributes:
+            attr1: "generic.movementSpeed .1 add"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "damage_all 10"
+    runestone_red:
+        type: "351:1"
+        name: "&6Runestone"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It feels warm to the touch"
+          - "&5The rune glows slightly"
+        enchants:
+          - "silk_touch 33"
+    runestone_green:
+        type: "351:2"
+        name: "&6Runestone"
+        lore:
+          - "&5A runeis carved into the stone"
+          - "&5It feels heavy in your hand"
+          - "&5The rune glows slightly"
+        enchants:
+          - "silk_touch 33"
+    runestone_Ghureg:
+        type: "351:2"
+        name: "&6Runestone of Ghureg"
+        lore:
+          - "&5A runeis carved into the stone"
+          - "&5It feels heavy in your hand"
+          - "&5The rune glows slightly"
+        enchants:
+          - "silk_touch 33"
+    runestone_purple:
+        type: "351:5"
+        name: "&6Runestone"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It feels larger in our hand then it looks"
+          - "&5The rune glows slightly"
+        enchants:
+          - "silk_touch 33"
+    runestone_yellow_speed:
+        type: "351:11"
+        name: "&6Runestones"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It feels lighter in our hand then you would exspect"
+          - "&5The rune glows softly"
+        enchants:
+          - "silk_touch 33"
+    runestone_gray:
+        type: "351:7"
+        name: "&6Runestone"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5you feel very powerful when held"
+          - "&5The rune glows brightly"
+        enchants:
+          - "silk_touch 33"
+    runestone_blue:
+        type: "351:12"
+        name: "&6Runestone"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It makes you feel stronger, yet silly when held"
+          - "&5The rune glows slightly"
+    maze_blue_pot1:
+        type: "373:8267"
+        name: "&aPison Antiserum"
+        lore:
+          - "&5Some would say fight fire with fire"
+          - "&5I say fight poison with poison"
+          - "&5Theres no harm with a little ale"
+        potioneffects:
+          - "9 1 600"
+          - "2 1 600"
+    maze_blue_pot2:
+        type: "373:8259"
+        name: "&cFire Whisky"
+        lore:
+          - "&5Some great ale"
+        potioneffects:
+          - "9 1 600"
+          - "12 1 600"
+          - "4 1 600"
+    maze_blue_pot3:
+        type: "373:8236"
+        name: "&cMolt"
+        lore:
+          - "&5Some great ale"
+        potioneffects:
+          - "9 1 600"
+          - "23 1 600"
+          - "18 1 600"
+    maze_blue_pot4:
+        type: "373:8265"
+        name: "&cLeminade"
+        lore:
+          - "&5Some great ale"
+        potioneffects:
+          - "9 1 600"
+          - "23 1 600"
+          - "18 1 600"
+    runestone_pink:
+        type: "351:9"
+        name: "&6Runestone"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It feels larger in our hand"
+          - "&5The rune glows slightly"
+        enchants:
+          - "silk_touch 33"
+    magicquest_Ghureg_armor:
+        type: "388"
+        name: "&5Master Magic Robes"
+        lore:
+          - "&7Magic robes that are light and"
+          - "&7allows you to wave that wand around"
+        attributes:
+            attr1: "generic.maxHealth 288 add"
+            attr2: "generic.knockbackResistance 1 add"
+            attr4: "generic.armor 30 add"
+        enchants:
+          - "thorns 2"
+    Swamwand:
+        type: "stick"
+        name: "&6S&4w&3a&bm&7m&di&ce &1W&aa&en&6d"
+        lore:
+          - "&dits almost like you force feed them one"
+        attributes:
+            attr1: "generic.movementSpeed .1 add"
+
+    magicquest_runestone_homestone:
+        type: "clay_ball"
+        name: "&6Runestone of Household"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals comforting to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and creates a portalto your home"
+    magicquest_runestone_worlding:
+        type: "clay_ball"
+        name: "&6Runestone of spawning"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals welcoming to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and brings you to the center of the world"
+    magicquest_scroll_mark:
+        type: "paper"
+        name: "&6Scroll of Marking"
+        lore:
+          - "&5This allows you to place"
+          - "&5 a rune down to beable return to"
+    three_ring:
+        type: "409"
+        name: "&2Ring of Power"
+        enchants:
+          - "silk_touch 33"
+    cali_ring:
+        type: "gold_nugget"
+        name: "&2Cali's Ring of Power"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "fire_aspect 20"
+          - "damage_all 20"
+    magicquest_runestone_healing:
+        type: "clay_ball"
+        name: "&6Runestone of Healing"
+        lore:
+          - "&5A rune carved into the stone"
+          - "&5feals warm to the touch"
+          - "&5It shines brightly when used"
+          - "&5 and heals you"
+    magicquest_scroll_volly:
+        type: "paper"
+        name: "&6Scroll of Volly"
+        lore:
+          - "&5This allows you to throw arrows"
+          - "&5costs ten arrows"
+    magicquest_scroll_waterbreathing:
+        type: "paper"
+        name: "&6Scroll Water Breathing"
+        lore:
+          - "&5This allows you you breath underwater"
+          - "&5costs 50 mana and reeds"
+    magicquest_scroll_thrunderstorm:
+        type: "paper"
+        name: "&6Scroll of the Thunderstorm"
+        lore:
+          - "&5This creates a thunderstorm spell"
+          - "&5costs 50 mana"
+    magicquest_scroll_deathscream:
+        type: "paper"
+        name: "&6Scroll of the summon."
+        lore:
+          - "&5This summons a monster that"
+          - "&5brings death with all that"
+          - "&5gets within its grasp"
+          - "&5costs 50 mana and a gold block"
+    magicquest_earthwand:
+        type: "stick"
+        name: "&5Earth Wand"
+        lore:
+          - "&7The entire world bends"
+          - "&7to do your bidding"
+        enchants:
+          - "silk_touch 33"
+    magicquest_enchanterwand:
+        type: "feather"
+        name: "&5Enchanting Quill"
+        lore:
+          - "&7This allows you to place runes"
+          - "&7alowing you to alter the world"
+        enchants:
+          - "knockback 9"
+    magicquest_necrowand:
+        type: "bone"
+        name: "&5Necromancer Staff"
+        lore:
+          - "&7The undead of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "damage_undead 10"
+    magicquest_armor:
+        type: "388"
+        name: "&5Magic Robes"
+        lore:
+          - "&7Magic robes that are light and"
+          - "&7allows you to wave that wand around"
+        attributes:
+            attr1: "generic.maxHealth 20 add"
+        enchants:
+          - "thorns 2"
+    Magicquest_learning_keyscroll:
+        type: "written_book"
+        title: "&dMagic Scroll"
+        author: "&6The_Maker_of_Magic"
+        pages:
+          - |
+            oshfit zahrel naizridi
+            To The House Of Houses
+            Magic Is Preformed Togeather
+          - |
+            Mahal-kuk-khizdîn
+            The Creater And Making Of Magic 
+    magicquest_legendarywand:
+        type: "stick"
+        name: "&5Legendary Wand"
+        lore:
+          - "&ayour power becomes Legendary!"
+          - "&aAll the worlds forces are at"
+          - "&ayour hands"
+        enchants:
+          - "fire_aspect 10"
+    magicquest_firewand:
+        type: "blaze_rod"
+        name: "&cFire Wand"
+        lore:
+          - "&7The fires of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "fire_aspect 5"
+    magicquest_arcanewand:
+        type: "bone"
+        name: "&dArcane Wand"
+        lore:
+          - "&7The darkness of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "damage_undead 7"
+    magicquest_frostwand:
+        type: "stick"
+        name: "&9Frost Wand"
+        lore:
+          - "&7The waters of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "silk_touch 33"
+    magicquest_lightwand:
+        type: "feather"
+        name: "&eLight Wand"
+        lore:
+          - "&7The lights of the world muster"
+          - "&7to do your bidding"
+        enchants:
+          - "knockback 9"
+    Ghureg_ring:
+        type: "emerald"
+        name: "&2Ghureg's Ring of Power"
+        enchants:
+          - "knockback 19"
+          - "silk_touch 33"
+          - "fire_aspect 20"
+          - "damage_all 20"
+    skywars_Lootpot:
+        type: "373:8257"
+        name: "&CLoot Pot"
+        lore:
+          - "&5DvZ has healing pots,"
+          - "&5well we have pots that"
+          - "&5we stuff things into."
+          - "&5so drink up and dont choke"
+          - "&5on your sword... or your bow"
+          - "&5or what ever you get in there"
+          - "&6Drink to get your kit"
+        potioneffects:
+          - "9 1 200"
+          - "10 8 200"
+          - "23 100 200"
+    weeding_ring:
+        type: "371"
+        name: "&6Wedding Ring"
+        lore:
+          - "&5A beautiful gold wedding ring"
+    skywars_wand:
+        type: "blaze_rod"
+        name: "&7Skywars Wand &4STAFF ONLY"
+        lore:
+          - "&5Use this to run and play"
+          - "&5Diffrent games of skywars"
+          - "&4SHOULD BE USED BY"
+          - "&4ADMIN/STAFF ONLY"
+          - "&4ANY PLAYER FOUND WITH THIS ITEM"
+          - "&4WILL BE PERMINTLY BANNED ON SITE"
+    skywars_pick:
+        type: "iron_pickaxe"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Ya you read that right..."
+          - "&5Im just to lasy to"
+          - "&5change it."
+          - "&4Ctrl+c then Ctrl+v"
+          - "&4makes prgraming go faster"
+    skywars_basicisword:
+        type: "iron_sword"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Just a basic sword..."
+          - "&5Nothing special here"
+    dragonbreath:
+        type: "351:1"
+        name: "&6dragonbreath"
+        lore:
+          - "&5A rune is carved into the stone"
+          - "&5It makes you feel stronger, yet silly when held"
+          - "&5The rune glows slightly"
+    skywars_basicdsword:
+        type: "diamond_sword"
+        name: "&7Iron Sword"
+        lore:
+          - "&5Ya you read that right..."
+          - "&5Im just to lasy to"
+          - "&5change it."
+          - "&4Ctrl+c then Ctrl+v"
+          - "&4makes prgraming go faster"
+    skywars_basicssword:
+        type: "stone_sword"
+        name: "&7Stone Sword"
+        lore:
+          - "&5Just a basic sword..."
+          - "&5Nothing special here"
+    skywars_basicbow:
+        type: "bow"
+        name: "&7Bow"
+        lore:
+          - "&5What do you exspect,"
+          - "&5a special tool tip?"
+    skywars_basicarrow:
+        type: "arrow"
+        name: "&7Steel Tiped Arrow"
+        lore:
+          - "&5Just a basic arrow..."
+          - "&5do you people really"
+          - "&5expect me to put cool"
+          - "&5things in these"
+          - "&5descriptions?"
+    skywars_basiclchest:
+        type: "leather_chestplate"
+        name: "&4Healing Chestplate"
+        color: "800000"
+        lore:
+          - "&5Dues not take a lot of"
+          - "&5protection but it gives health"
+        attributes:
+            attr1: "generic.maxHealth 8 add"
+    skywars_basicIchest:
+        type: "iron_chestplate"
+        name: "&4Chestplate"
+        lore:
+          - "&5Great tanky protection"
+        enchants:
+          - "THORNS 2"
+    skywars_basicdchest:
+        type: "diamond_chestplate"
+        name: "&4Heavy_ Chestplate"
+        lore:
+          - "&5Great knockback protection"
+        enchants:
+          - "PROTECTION_PROJECTILE 4"
+    skywars_basicgchest:
+        type: "317"
+        name: "&4Feet air"
+        lore:
+          - "&5feels great on the feet"
+        enchants:
+          - "PROTECTION_FALL 2"
+        attributes:
+            attr1: "generic.maxHealth 4 add"
+    skywars_basictnt:
+        type: "46"
+        name: "&4Boom?"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+    skywars_basicstone:
+        type: "98"
+        name: "&4Stone Brick"
+        lore:
+          - "&5These stones where mined"
+          - "&5from a mountin way... wait"
+          - "&5I just relised im to lasy"
+          - "&5to type out the backstory of"
+          - "&5these...even beter, why "
+          - "&5is thir a backstory?!?"
+    skywars_basiclog:
+        type: "162"
+        name: "&4Log"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+          - "&5Ya thats right just wait"
+          - "&5It will boom soon enough"
+    skywars_basicglass:
+        type: "20"
+        name: "&4Glass"
+        lore:
+          - "&5KAAAHHHHBBBBOOOOOMMM"
+          - "&5Ya thats right just wait"
+          - "&5It will boom soon enough"
+    Jellybow:
+        type: "261"
+        name: "&3Weetigo"
+        lore:
+          - "&5Every one has hured"
+          - "&5of the weetigo"
+          - "&5hopefully it dues not go your weet"
+    skywars_basicgpot:
+        type: "373:8257"
+        name: "&4Exp Ale"
+        lore:
+          - "&9This stuff is strong"
+        potioneffects:
+          - "1 1 200"
+          - "3 1 200"
+          - "10 1 200"
+    skywars_basicbpot:
+        type: "373:16454"
+        name: "&4Ale of the dead"
+        lore:
+          - "&9This stuff is strong"
+        potioneffects:
+          - "2 1 20"
+          - "4 1 20"
+          - "9 1 20"
+          - "11 1 10"
+    gh_skull:
+        type: "397:3"
+        name: "&9Ghureg's head"
+        skullowner: "Ghureg"
+    hex_skull:
+        type: "397:3"
+        name: "&9Ghureg's head"
+        skullowner: "HexielDark"
+    rum_skull:
+        type: "397:3"
+        name: "&9Rumbles's head"
+        skullowner: "Rumble88"
+    bat_skull:
+        type: "397:3"
+        name: "&9Bat's head"
+        skullowner: "_Skaer"
+    hunt_skull:
+        type: "397:3"
+        name: "&9Viv's head"
+        skullowner: "VividDelusions"
+        attributes:
+            attr1: "generic.maxHealth 200 add"
+    Ben_book:
+        type: "written_book"
+        title: "&5Karma Sutra: Part 2"
+        author: "&4Karl Marx"
+        lore:
+          - "&bThe religious book of Benduism"
+        pages:
+          - |
+            These are the rules
+            That a devoted             
+            Benduism follower
+            should follow to lead
+            a proper life;
+          - |
+            1. Don't kill unless absolutely necessary or comedic value
+            2. Don't use dead jokes unironically
+            3. someone wrongs you punch them in the face and  forgive them
+            4. The iPhone is sus lmao
+            5. your favorite color is &ablue
+          - |
+            6. you can worship other idols as long as you fat shame them
+            7. weather is a social construct
+            8. The holy Number is 372.8
+            9. PDA is not ok
+            10. PDA is okay after 11 o'clock
+            11. PDA is not okay after 11 o'clock on Tuesday
+          - |
+            12. You can have sex... That's ok
+            13. This is the last rule
+            14. 13 is the last rule
+            15. Seriously 13 is the last rule
+            
+            This is the story of the great profit of ben brought about Benduism and stuff
+          - |
+            Umm So like um there was this egg thing and like the shell was made of like the universe; or something and inside was like magic I think and the universe; waz not strong enough to hold the magic and like it went everywhere and made all the things;
+          - |
+            But umm the magic it's like hella sparse and it was sad; And fast forward like a few billion years and there its civilisation and things and there was a dude named Ben that was lit as fuck that was good at the magics; and was like dude this is
+          - |
+            lit AF like me; EHHH lmao and people were like Nawww you a hoe; and he cried a lot; Then he got real good at the magics and he showed; everyone and he showed everyone and they was  like
+          - |
+            EHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+          - |
+            and then and then and then they were like that's pretty good then he taught people magic and they sucked then ha plot twist they were the hoe; lol key and then the next thing that happens and then he tries harder and they try harder and they get better
+          - |
+            and they are like yo homie what can we do to repay you; and then they was like so and then he was like;
+          - |
+            like you just need to follow me forever and follow my rules and follow me every waking moment of your life and be like good with ASMR like really good. and then he was like and that's about it;
+          - |
+            And then it was henceforth of the faith and all the people of the land followed in the greatness but not really like at not all there's nobody please join me
+    Masters_book:
+        type: "written_book"
+        title: "&5The Masters of Magic"
+        author: "&6The Historyan"
+        lore:
+          - "&bA translation of one of the many scolls of the Historyan"
+        pages:
+          - |
+            This is a copy of an original scroll, The original was written in old runes, so some translations may be off. This was translated by a schooler by the college of fahnel. The original was written in gold runes, of which seemed to keep changing in front of me.
+          - |
+            If you are here to learn of spells that are rair or of power, you are reading the wrong scroll. But rather of the power they could posses, to tell of how they come about and how our world was created.
+          - |
+            In the first chapter of our world the children of the Great Creator each were given extraordinary power of one of the nine elements of magic. They each had the ability of a type of magic that no mortal will ever be able to possess: Creation magic.
+          - |
+            Each child held the ability to create within their element, extraordinary things, Lakes, mountains, volcanoes, they could shape the world in their image.
+          - |
+            The Great Creator also created people for his children to govern over, mortals. elves, dwarves, gnomes, goblins, kobolds, and more, but that is another story. Sadly after the Great Hatching, where the children were brought into the world,
+          - |
+            and magic was given to some mortals, Some of the children were possessed by lust over their power.Wanting more, they began to wage wars with one another, but as it is with immortals, they could never win,
+          - |
+            nor lose. So in turn they began to punish those they were given. The mortals began to suffer under the rain of the divines.
+          - |
+            Most of the nine chose to destroy rather than create, as their father had intended. After hundreds of years a young mortal rose, but she had an odd power, she had the ability of using creation magic.
+          - |
+            The divines saw her as a challenge to their power and saw it fit to destroy her. Not much is known about her, but it was said that she created a plan to better the lives of the mortal people. She became known as the Mother Seer.
+          - |
+            For she had laid out the future for hundreds of years. She had created a prophecy of the end of the divines as they had ruled. Some legends tell of a tail of a Fortress of prophecy, a mountain that was so thick that no beast, mortal or immortal could
+          - |
+            find, let alone enter unless they were given access, or belonged to a part of the prophecy that were engraved in runes along its walls. Years later rumors and scrolls emerged from this mountain telling stories of death, ruin, great battles, and heroes,
+          - |
+            all of which became true. I can tell for a fact that this fortress is real for this is where i reside now. Now this is where I come into play. I am the Historian, how I came to be, How I exist for so long, and how i can speak every
+          - |
+            language, i don not know. But it is my job to watch, listen and record all events that has, have, is, and will. I have been given a tool of more power than ever. I have been given a quill with the power to record, and tell a tail.
+          - |
+            My predecessor had change something, but he never could have imagined the repercussions of what would happen. It destroyed him, consumed him into a void, but this is how i came to know all of what has already been said, from his scrolls and books.
+          - |
+            My predecessor had change something, but he never could have imagined the repercussions of what would happen. It destroyed him, consumed him into a void, but this is how i came to know all of what has already been said, from his scrolls and books.
+          - |
+            Each of us living in our youth until we are no longer the historian then all at once, within a day every moon we have seen catches up to our age. But that is enough about me. For the events I am meant to write is about the downfall of the divines.
+          - |
+            With me telling you that, I shall continue with what i have been told to record. Eighteen Hundred years after the loss of the Mother Seer, a man rose from the crowds, he too had the ability of creation.
+          - |
+            But he did not have the ability to philosophy. He soon became known as the maker of magic, for he trained nine mortals in the art of creation, but each only in a specific element. Eventually they became masters in each element of magic, being the first masters.
+          - |
+            The maker of magic and the masters trapped each divine into the bodys of the masters, linking their soul to that of the divines. taming and giving the divines mortality. The masters were blessed with unusually long lives, but
+          - |
+            eventually they grew old. Each master must pick an apprentice and teach them the art of their element, so that when they die, the soul of the divine wis passed on to the new master. The first death of a master came as a shock to everyone.
+          - |
+            But within eight minutes, all the masters had died, and so each master, as soon as they are chosen must pick an apprentice, otherwise they risk releasing the divines wrath on all. Some of the divines that had been kind to mortals, such as arcane,
+          - |
+            let it happen and betters the worlds of mortals with a true linked spirit. While others, such as darkness, is in pain constantly because their souls are constantly battling within the void. The rest is written on the minds of the people
+          - |
+            as legends for it is the end of may story. For only the masters will ever know the specifics of what has happened to their predecessors. The maker of magic also drifted into legend, and it is unknown what truly happened to him.

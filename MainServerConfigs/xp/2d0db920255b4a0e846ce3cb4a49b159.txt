@@ -1,0 +1,5 @@
+light: 61
+frost: 753
+necromancy: 6
+fire: 902
+arcane: 45

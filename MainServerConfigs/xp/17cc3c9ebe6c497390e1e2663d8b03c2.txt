@@ -1,0 +1,4 @@
+light: 1
+frost: 4
+fire: 466
+arcane: 1

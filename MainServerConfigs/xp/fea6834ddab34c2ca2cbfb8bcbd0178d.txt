@@ -1,0 +1,10 @@
+light: 8018
+frost: 12499
+acrane: 8000
+legendary: 8080
+necromancy: 8011
+earth: 8047
+fire: 8075
+enchanter: 8010
+arcane: 97
+wizardery: 5528

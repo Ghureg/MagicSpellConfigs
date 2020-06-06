@@ -1,0 +1,6 @@
+Weetigo
+help
+list
+magicquest_runestone_healing
+skywars_basicarrow
+spawn

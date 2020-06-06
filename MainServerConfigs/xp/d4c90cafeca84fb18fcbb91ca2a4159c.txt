@@ -1,0 +1,2 @@
+fire: 210
+arcane: 68
